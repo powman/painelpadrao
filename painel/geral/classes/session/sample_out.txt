@@ -1,0 +1,15 @@
+When creating a new session with EyeSecureSession using the ex1.php
+the following is created:
+
+Cookies Information:
+====================
+Name: EYESESS2fc76f21a92ecfe5dc6d1f888ef916cf
+Value: 1hklnnjlkp55c6hcug14fqi1l2
+
+Contents of $_SESSION:
+======================
+Array
+(
+    [g9OTFRbZNqKlbCBljnsY0OiwHzroB6Oj] => JS8QM7pa7U0=
+    [jUH95HIgUgA=] => 3Maa8uwu+Eg=
+)

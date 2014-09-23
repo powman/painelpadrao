@@ -1,0 +1,254 @@
+/* The slider */
+.iviewSlider {
+	overflow: hidden;
+}
+
+/* The timer in the Slider */
+#iview-timer {
+	position: absolute;
+	z-index: 100;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+#iview-timer div {
+	border-radius: 3px;
+}
+
+/* The Preloader in the Slider */
+#iview-preloader {
+	position: absolute;
+	z-index: 1000;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: #000 1px solid;
+	padding: 1px;
+	width: 100px;
+	height: 3px;
+}
+#iview-preloader div {
+	float: left;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	height: 3px;
+	background: #000;
+	width: 0px;
+}
+
+/* The strips and boxes in the Slider */
+.iview-strip {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+.iview-block {
+	display:block;
+	position:absolute;
+	z-index:5;
+}
+
+/* Direction nav styles (e.g. Next & Prev) */
+.iview-directionNav a {
+	position:absolute;
+	top:45%;
+	z-index:9;
+	cursor:pointer;
+}
+.iview-prevNav {
+	left:0px;
+        background: url('../img/setaEsq.png') no-repeat top center;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999999px;
+}
+.iview-nextNav {
+	right:0px;
+        background: url('../img/setaDir.png') no-repeat top center;
+        width: 25px;
+        height: 25px;
+        text-indent: -9999999px;
+}
+
+/* Control nav styles (e.g. 1,2,3...) */
+.iview-controlNav {
+	position:absolute;
+	z-index:9;
+}
+.iview-controlNav a {
+	z-index:9;
+	cursor:pointer;
+}
+.iview-controlNav a.active {
+	font-weight:bold;
+}
+.iview-controlNav .iview-items ul {
+	list-style: none;
+}
+.iview-controlNav .iview-items ul li {
+	display: inline;
+	position: relative;
+}
+.iview-controlNav .iview-tooltip {
+	position: absolute;
+}
+
+/* The captions in the Slider */
+.iview-caption {
+	position:absolute;
+	z-index:4;
+	overflow: hidden;
+	cursor: default;
+}
+
+/* The video show in the Slider */
+.iview-video-show {
+	background: #000;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 101;
+}
+.iview-video-show .iview-video-container {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.iview-video-show .iview-video-container a.iview-video-close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	background: #222;
+	color: #FFF;
+	height: 20px;
+	width: 20px;
+	text-align: center;
+	line-height: 29px;
+	font-size: 22px;
+	font-weight: bold;
+	overflow: hidden;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.iview-video-show .iview-video-container a.iview-video-close:hover {
+	background: #444;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* STYLE PARA O SLIDER */
+
+
+
+#iview {
+	display: block;
+	position: relative;
+	-webkit-box-shadow: 0 20px 30px -18px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 0 20px 30px -18px rgba(0, 0, 0, 0.5);
+	box-shadow: 0 20px 30px -18px rgba(0, 0, 0, 0.5);
+}
+
+#iview .iviewSlider {
+	display: block;
+	width: 497px;
+	height: 234px;
+	overflow: hidden;
+}
+
+.iview-controlNav {
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+        margin-left: -44px;
+}
+
+.iview-controlNav a {
+	text-indent: -9999px;
+}
+
+.iview-controlNav div.iview-items {
+	float: left;
+	padding: 0px 10px 0px 10px;
+}
+
+.iview-controlNav a.iview-control {
+	padding: 0px;
+	float: left;
+	width: 11px;
+	height: 12px;
+	background: url('../img/bullets_2.png') no-repeat;
+	line-height: 0px;
+}
+
+.iview-controlNav a.iview-control.active {
+	background-position: 0px -12px;
+}
+
+#iview-preloader {
+	border: #893921 1px solid;
+	width: 150px
+}
+
+#iview-preloader div {
+	background: #CF6F00;
+}
+
+.iview-controlNav div.iview-items ul li {
+	padding: 0px;
+	float: left;
+	width: 11px;
+	height: 12px;
+	margin: 3px;
+	margin-top: 16px;
+	line-height: 0px;
+}
+
+#iview #iview-tooltip {
+	display: none;
+	position: absolute;
+	background: url('../img/tooltip.png') no-repeat;
+	width: 124px;
+	height: 90px;
+	bottom: 30px;
+	left: -67px;
+	padding: 10px;
+	z-index: 100;
+}
+
+#iview #iview-tooltip div.holder {
+	display: block;
+	width: 124px;
+	height: 84px;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+#iview #iview-tooltip div.holder div.container {
+	display: block;
+	width: 4000px;
+}
+
+#iview #iview-tooltip div.holder div.container div {
+	float: left;
+	display: block;
+	overflow: hidden;
+	width: 124px;
+	height: 84px;
+	left: -50%;
+	text-align: center;
+}
+
+#iview #iview-tooltip div.holder div.container div img {
+	height: 84px;
+	margin: 0 auto;
+}
