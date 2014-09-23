@@ -1,0 +1,111 @@
+RewriteEngine On
+
+RewriteBase /sites/painelPadrao/site/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^img\/a(.+)\/b(.+)\/abemd.gif$ sistemas/geral/newsletter/audiencia.php?a=$1&b=$2 [L]
+#RewriteRule ^css\/all\.css combine.php?type=css&files=css/estilo.css,js/validateForm/css/estilo.css,js/iealert/iealert/style_dev.css,js/lightbox/themes/carbono/jquery.lightbox.css [L]
+#RewriteRule ^js\/all\.js combine.php?type=javascript&files=js/jquery.js,js/jqueryui.js,js/scripts.js,js/iealert/iealert.js,js/validateForm/jquery.validationEngine.js,js/validateForm/jquery.validationEngine-pt.js,js/mascaras.js,js/jquery.blockUI.js,js/niceScroll/jquery.nicescroll.min.js,js/lightbox/jquery.lightbox.min.js [L]
+
+RewriteRule ^avalie-seu-imovel-aluguel index.php?acao=avalie-seu-imovel&tipo=aluguel
+RewriteRule ^avalie-seu-imovel-venda index.php?acao=avalie-seu-imovel&tipo=venda
+RewriteRule ^([0-9a-zA-Z_-]+)$ index.php?acao=$1
+RewriteRule ^pesquisa/(.*)$ index.php?acao=pesquisa&atributos=$1
+RewriteRule ^imovel/(.*)$ index.php?acao=imovel-detalhes&atributos=$1
+
+
+
+#formato da imagem sem logo
+#http://agendagospelgyn.com.br/images/w590/h550/painel/geral/sistema/arq_galerias/fotos/18/0201301120642020.jpg
+
+#formato da imagem com logo
+#http://agendagospelgyn.com.br/images/w590/logo1/painel/geral/sistema/arq_galerias/fotos/18/0201301120642020.jpg
+
+RewriteRule ^imagem\/(.*)$ gt.php?thumb=$1
+
+RewriteRule ^imagem_water\/(.*)$ gt.php?thumb=$1&l=test
+
+
+#Primeiramente, vamos bloquear a listagem das pastas quando não houver um documento padrão (index.html, index.php, default.asp, etc.).
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+
+#Agora vamos eliminar a “assinatura” do servidor que é exibida nas páginas de erro:
+ServerSignature Off
+
+
+
+#Resumidamente, Entity tags (ETags) são um tipo de mecanismo feito para checar se existe uma nova versão do arquivo em cache. Com esse mecanismo desabilitado, nós impedimos que o cache ou o browser fiquem tentando fazer a validação, portanto ele é forçado a utilizar Cache-Control e Expires header (faleremos desses dois daqui a pouco). Para disabilitar o ETag:
+<IfModule mod_headers.c>
+  Header unset ETag
+</IfModule>
+
+FileETag None
+
+
+
+
+#Combinado com o gzip, um cache bem configurado pode diminuir em até 90% o tempo de carregamento da página.
+<IfModule mod_expires.c>
+	ExpiresActive on
+	ExpiresDefault                          "access plus 1 month"
+	ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+	# Html
+	ExpiresByType text/html                 "access plus 0 seconds"
+
+	# Data
+	ExpiresByType text/xml                  "access plus 0 seconds"
+	ExpiresByType application/xml           "access plus 0 seconds"
+	ExpiresByType application/json          "access plus 0 seconds"
+
+	# Feed
+	ExpiresByType application/rss+xml       "access plus 1 hour"
+	ExpiresByType application/atom+xml      "access plus 1 hour"
+
+	# Favicon
+	ExpiresByType image/x-icon              "access plus 1 week"
+
+	# Media: images, video, audio
+	ExpiresByType image/gif                 "access plus 1 month"
+	ExpiresByType image/png                 "access plus 1 month"
+	ExpiresByType image/jpg                 "access plus 1 month"
+	ExpiresByType image/jpeg                "access plus 1 month"
+	ExpiresByType video/ogg                 "access plus 1 month"
+	ExpiresByType audio/ogg                 "access plus 1 month"
+	ExpiresByType video/mp4                 "access plus 1 month"
+	ExpiresByType video/webm                "access plus 1 month"
+
+	# HTC files
+	ExpiresByType text/x-component          "access plus 1 month"
+
+	# Webfonts
+	ExpiresByType application/x-font-ttf    "access plus 1 month"
+	ExpiresByType font/opentype             "access plus 1 month"
+	ExpiresByType application/x-font-woff   "access plus 1 month"
+	ExpiresByType image/svg+xml             "access plus 1 month"
+	ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+	# CSS / JS
+	ExpiresByType text/css                  "access plus 1 year"
+	ExpiresByType application/javascript    "access plus 1 year"
+
+</IfModule>
+
+
+#Essas diretivas irão melhorar o desempenho no nosso querido Internet Explorer, forçando-o a sempre carregar utilizando a última versão disponível (ou utilizar o chrome frame, caso esteja instalado):
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=Edge,chrome=1"
+    <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
+        Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
+
+
+#O trecho abaixo irá redirecionar http://dominio.com.br para http://www.dominio.com.br
+#RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
+#RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
