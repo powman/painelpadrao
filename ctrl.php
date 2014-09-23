@@ -1,6 +1,5 @@
 <?php
 
-
 //defini os paths para as classes do sistema e as classes gerais
 $path["conexao"] = "painel/classes/";
 
@@ -22,6 +21,10 @@ $objCsv = new CSV();
 include_once $path["classes"] ."class.pdf.php";
 $objPdf = new FPDF();
 
+//classe de post
+include_once $path["classes"]."session/post.class.php";
+$objPost = new gp();
+
 $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
@@ -31,7 +34,7 @@ $meta->og['description'] = "";
 
 $titPag = ".: COLOCAR TITULO - ";
 
-switch ($_REQUEST["acao"]) {
+switch ($objPost->param["acao"]) {
     default:
         $meta->tags = "metas tags separadas por virgula";
         $meta->descricao = "descrição maximo 160 caracteres";

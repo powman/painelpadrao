@@ -1,19 +1,12 @@
 RewriteEngine On
 
-RewriteBase /sites/painelPadrao/site/
+RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule ^img\/a(.+)\/b(.+)\/abemd.gif$ sistemas/geral/newsletter/audiencia.php?a=$1&b=$2 [L]
-#RewriteRule ^css\/all\.css combine.php?type=css&files=css/estilo.css,js/validateForm/css/estilo.css,js/iealert/iealert/style_dev.css,js/lightbox/themes/carbono/jquery.lightbox.css [L]
-#RewriteRule ^js\/all\.js combine.php?type=javascript&files=js/jquery.js,js/jqueryui.js,js/scripts.js,js/iealert/iealert.js,js/validateForm/jquery.validationEngine.js,js/validateForm/jquery.validationEngine-pt.js,js/mascaras.js,js/jquery.blockUI.js,js/niceScroll/jquery.nicescroll.min.js,js/lightbox/jquery.lightbox.min.js [L]
 
-RewriteRule ^avalie-seu-imovel-aluguel index.php?acao=avalie-seu-imovel&tipo=aluguel
-RewriteRule ^avalie-seu-imovel-venda index.php?acao=avalie-seu-imovel&tipo=venda
-RewriteRule ^([0-9a-zA-Z_-]+)$ index.php?acao=$1
-RewriteRule ^pesquisa/(.*)$ index.php?acao=pesquisa&atributos=$1
-RewriteRule ^imovel/(.*)$ index.php?acao=imovel-detalhes&atributos=$1
+#RewriteRule ^imovel/(.*)$ index.php?acao=imovel-detalhes&atributos=$1
 
 
 

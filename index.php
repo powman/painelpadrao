@@ -16,7 +16,7 @@ include 'ctrl.php';
         <meta name="revisit-after" content="1 day" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
-        <meta name="author" content="Pixelgo - Sites Criativos" />
+        <meta name="author" content="Paulowebsite - Crialçao de sites" />
         <meta name="language" content="pt-br" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         

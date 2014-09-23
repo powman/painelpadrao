@@ -1,6 +1,6 @@
 <?php
 	//error_reporting(E_ALL);
-	ini_set('display_errors', 1);
+	ini_set('display_errors', 0);
 	header('Content-Type: text/html; charset=utf-8');
 	/* caminho dos paths */
 	if (($_SERVER['SERVER_NAME'] == '192.168.7.206') || ($_SERVER['SERVER_NAME'] == 'localhost')) {
@@ -23,7 +23,7 @@
 			//banco de dados local principal (o banco auxiliar é esse mais o sufixo _aux)
 			$allConfig["banco"]["local"]["host"]  = "localhost";
 			$allConfig["banco"]["local"]["user"]  = "root";
-			$allConfig["banco"]["local"]["senha"] = "mysql";
+			$allConfig["banco"]["local"]["senha"] = "";
 			$allConfig["banco"]["local"]["banco"] = "padrao_pdo";
 			$allConfig["banco"]["local"]["port"] = "3306";
 			$allConfig["banco"]["local"]["type"] = "mysql";
