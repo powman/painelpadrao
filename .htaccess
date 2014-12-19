@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteBase /
+RewriteBase /sites/painelPadrao/site/painelpadrao/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -21,18 +21,18 @@ RewriteRule ^imagem\/(.*)$ gt.php?thumb=$1
 RewriteRule ^imagem_water\/(.*)$ gt.php?thumb=$1&l=test
 
 
-#Primeiramente, vamos bloquear a listagem das pastas quando não houver um documento padrão (index.html, index.php, default.asp, etc.).
+#Primeiramente, vamos bloquear a listagem das pastas quando nï¿½o houver um documento padrï¿½o (index.html, index.php, default.asp, etc.).
 <IfModule mod_autoindex.c>
     Options -Indexes
 </IfModule>
 
 
-#Agora vamos eliminar a “assinatura” do servidor que é exibida nas páginas de erro:
+#Agora vamos eliminar a ï¿½assinaturaï¿½ do servidor que ï¿½ exibida nas pï¿½ginas de erro:
 ServerSignature Off
 
 
 
-#Resumidamente, Entity tags (ETags) são um tipo de mecanismo feito para checar se existe uma nova versão do arquivo em cache. Com esse mecanismo desabilitado, nós impedimos que o cache ou o browser fiquem tentando fazer a validação, portanto ele é forçado a utilizar Cache-Control e Expires header (faleremos desses dois daqui a pouco). Para disabilitar o ETag:
+#Resumidamente, Entity tags (ETags) sï¿½o um tipo de mecanismo feito para checar se existe uma nova versï¿½o do arquivo em cache. Com esse mecanismo desabilitado, nï¿½s impedimos que o cache ou o browser fiquem tentando fazer a validaï¿½ï¿½o, portanto ele ï¿½ forï¿½ado a utilizar Cache-Control e Expires header (faleremos desses dois daqui a pouco). Para disabilitar o ETag:
 <IfModule mod_headers.c>
   Header unset ETag
 </IfModule>
@@ -42,7 +42,7 @@ FileETag None
 
 
 
-#Combinado com o gzip, um cache bem configurado pode diminuir em até 90% o tempo de carregamento da página.
+#Combinado com o gzip, um cache bem configurado pode diminuir em atï¿½ 90% o tempo de carregamento da pï¿½gina.
 <IfModule mod_expires.c>
 	ExpiresActive on
 	ExpiresDefault                          "access plus 1 month"
@@ -90,7 +90,7 @@ FileETag None
 </IfModule>
 
 
-#Essas diretivas irão melhorar o desempenho no nosso querido Internet Explorer, forçando-o a sempre carregar utilizando a última versão disponível (ou utilizar o chrome frame, caso esteja instalado):
+#Essas diretivas irï¿½o melhorar o desempenho no nosso querido Internet Explorer, forï¿½ando-o a sempre carregar utilizando a ï¿½ltima versï¿½o disponï¿½vel (ou utilizar o chrome frame, caso esteja instalado):
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=Edge,chrome=1"
     <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
@@ -99,6 +99,6 @@ FileETag None
 </IfModule>
 
 
-#O trecho abaixo irá redirecionar http://dominio.com.br para http://www.dominio.com.br
+#O trecho abaixo irï¿½ redirecionar http://dominio.com.br para http://www.dominio.com.br
 #RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
 #RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
