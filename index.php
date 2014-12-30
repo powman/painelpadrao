@@ -36,9 +36,8 @@ include 'ctrl.php';
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
-        <!--#begin file input-->
+
 	    <link href="<?= $path["site"] ?>css/all.css" rel="Stylesheet"/>
-	    <!--End file input-->
 
         <?php ob_end_flush(); flush();?>
         <script>
@@ -79,6 +78,8 @@ include 'ctrl.php';
             </div>
         </div>
         <!-- Placed at the end of the document so the pages load faster -->
+		<script src="<?= $path["site"] ?>js/bower_components/jquery/dist/jquery.min.js" type="text/javascript"></script>
+		<script src="<?= $path["site"] ?>js/bower_components/queryloader2/queryloader2.min.js" type="text/javascript"></script>
 		<script src="<?= $path["site"] ?>js/scripts.js" type="text/javascript"></script>
     </body>
     
