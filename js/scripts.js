@@ -17,6 +17,7 @@ yepnope([{
 	          pathSite+"js/bower_components/jquery-mousewheel/jquery.mousewheel.min.js", 
 	          pathSite+"js/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js", 
 	          pathSite+"js/bower_components/noty/js/noty/packaged/animate.css", 
+	          pathSite+"js/bower_components/html2canvas/build/html2canvas.min.js", 
 	          pathSite+"js/bower_components/jQuery-Mask-Plugin/dist/jquery.mask.min.js" ],
 	  complete: function () {
 
@@ -407,6 +408,20 @@ yepnope([{
 				     });
 			  }}]);
 		  }
+		  
+		  // inserir script aqui
+		  
+		  // Faz um print da tela
+		  $('#load').click(function(){
+
+	            html2canvas($('#rodape'), {
+	                onrendered: function (canvas) {
+	                    var img = canvas.toDataURL("image/png")
+	                    window.open(img);
+	                }
+	            });
+
+	    });
 		  
 
 	  }
