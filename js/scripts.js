@@ -281,11 +281,11 @@ yepnope([{
 
 		  	if($('input[mask-input=cpfCnpj]').length != 0){
 		  		var options =  {
-		  		  maxlength: true,
+		  		  maxlength: false,
 		  		  onKeyPress: function(cep, event, currentField, options){
 		  		 var masks = ['00.000.000/0000-00', '###.###.###-##'];
 		  			mask = (cep.length>14) ? masks[0] : masks[1];
-		  		  $('input[mask-input=cpfCnpj]').mask(mask, this);
+		  		  $('input[mask-input=cpfCnpj]').mask(mask, options);
 		  		}};
 		  		
 		  		$('input[mask-input=cpfCnpj]').mask('###.###.###-##', options);
