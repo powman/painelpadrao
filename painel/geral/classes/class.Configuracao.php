@@ -34,11 +34,11 @@ class Configuracao {
 	}
 	
 	
-	function listar($atributos=array(),$orderBy=null) {
+	function listar($atributos=array(),$orderBy=null,$limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
-		$aValores = $sqlGl -> from("configuracao")->where($atributos)->orderBy('id,nome');
+		$aValores = $sqlGl -> from("configuracao")->where($atributos)->limit($limit)->orderBy($orderBy);
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	

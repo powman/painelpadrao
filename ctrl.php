@@ -25,6 +25,10 @@ $objPdf = new FPDF();
 include_once $path["classes"]."session/post.class.php";
 $objPost = new gp();
 
+//inclui a classe de correios
+include_once $path["classes"] ."class.Correios.php";
+$objCorreios = new Correios();
+
 $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
@@ -50,9 +54,7 @@ switch ($objPost->param["acao"]) {
     break;
 
     case 'envia-contato':
-    	
-    	$condicao = array();
-    	$condicao[] = array(
+    	$condicao = array(
     				'tipo' => "'Fale Conosco'",
     				'status' => 1
     			);

@@ -1823,7 +1823,7 @@ public function lerRss(){
 	}
 	else
 	{
-		echo 'NÃ£o foi possÃ­vel acessar o blog.';
+		echo 'Não foi possivel ler.';
 	}
 
 }
@@ -1935,6 +1935,31 @@ public function enviaEmail($emails=null, $msg=null, $replyTo=null, $assunto=null
 	
 	return $result;
 }
+
+
+function xml2array ( $xmlObject, $out = array () )
+{
+    foreach ( (array) $xmlObject as $index => $node )
+        $out[$index] = ( is_object ( $node ) ) ? xml2array ( $node ) : $node;
+
+    return $out;
+}
+
+
+
+function byte_format($size) {
+    $bytes = array( ' KB', ' MB', ' GB', ' TB' );
+    foreach ($bytes as $val) {
+        if (1024 <= $size) {
+            $size = $size / 1024;
+            continue;
+        }
+        break;
+    }
+    return round( $size, 1 ) . $val;
+}
+
+
 
 
 

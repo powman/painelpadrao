@@ -36,7 +36,7 @@ include 'ctrl.php';
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
         
-
+        <link href="<?= $path["site"] ?>js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 	    <link href="<?= $path["site"] ?>css/all.css" rel="Stylesheet"/>
 
         <?php ob_end_flush(); flush();?>

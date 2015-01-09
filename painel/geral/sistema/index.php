@@ -29,8 +29,10 @@ $objPost = new gp();
     //inclui a classe de formularios
     include_once "../classes/class.form.php";
     $objForm = new Form();
-
     
+    //inclui a classe dos correios
+    include_once "../classes/class.Correios.php";
+    $objCorreios = new Correios();
 
     if(!isset($objPost->param["ctrl"])){
        include '../ctrlLogs.php';
@@ -94,6 +96,10 @@ $objPost = new gp();
 <script type="text/javascript" src="js/jqueryui.js"></script>
 
 <script type="text/javascript" src="js/plugins/charts/excanvas.min.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.orderBars.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.pie.js"></script>
+<script type="text/javascript" src="js/plugins/charts/jquery.flot.resize.js"></script>
 <script type="text/javascript" src="js/plugins/charts/jquery.sparkline.min.js"></script>
 
 <script type="text/javascript" src="js/plugins/forms/uniform.js"></script>
@@ -139,6 +145,7 @@ $objPost = new gp();
 <script type="text/javascript" src="js/jquery.blockUI.js"></script>
 <script type="text/javascript" src="js/jquery.price_format.1.8.min.js"></script>
 
+
 <script type="text/javascript" src="js/custom.js"></script>
 
 <script src="js/plugins/ckeditor/ckeditor.js"></script>
@@ -177,7 +184,9 @@ $configuracao = Config::AtributosConfig(); ?>
                              ?>
                 <li><a href="index.php?acao=listar&ctrl=configuracoes" title=""><img src="images/icons/topnav/settings.png" alt="" />Formulários</a></li>
                 <li><a href="index.php?acao=listar&ctrl=modulo" title=""><img src="images/icons/topnav/settings.png" alt="" />Módulo</a></li>
+                <?if($configuracao["whm"]['dominio'] && $configuracao["whm"]['user'] && $configuracao["whm"]['pass'] && $configuracao["whm"]['userDominio']){?>
                 <li><a href="index.php?acao=listar&ctrl=cpanel" title=""><img src="images/icons/topnav/settings.png" alt="" />Hospedagem do Site</a></li>
+                <?php }?>
                 <?}?>
                 <li><a href="index.php?acao=sair&ctrl=usuarios" title=""><img src="images/icons/topnav/logout.png" alt="" />Deslogar</a></li>
             </ul>
@@ -189,8 +198,19 @@ $configuracao = Config::AtributosConfig(); ?>
     <ul id="menu" class="nav">
         <li class="dash"><a href="index.php" title=""><span>Início</span></a></li>
         <?
-                        if($objSession2->get('tlAdmLoginNivel') == 1){
-                             ?>
+        if($objSession2->get('tlAdmLoginNivel') == 1){
+             ?>
+        <li><a href="#" title="" class="exp"><span style="background-image:url('images/icons/light/create.png')">Hospedagem do Site</span></a>
+            <ul class="sub">
+                <?
+                if($objSession2->get('tlAdmLoginNivel') == 1 && $configuracao["whm"]['dominio'] && $configuracao["whm"]['user'] && $configuracao["whm"]['pass'] && $configuracao["whm"]['userDominio']){
+                     ?>
+                <li><a href="index.php?acao=listar&ctrl=cpanel" title="">Detalhes</a></li>
+                <li><a href="index.php?acao=criar-email&ctrl=cpanel" title="">--Criar Email</a></li>
+                <li><a href="index.php?acao=listar-email&ctrl=cpanel" title="">--Listar Emails</a></li>
+                <?}?>
+            </ul>
+        </li>
         <li><a href="#" title="" class="exp"><span style="background-image:url('images/icons/light/create.png')">Formulários</span></a>
             <ul class="sub">
                 <?

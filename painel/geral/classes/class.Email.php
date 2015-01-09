@@ -34,11 +34,11 @@ class Email {
 	}
 	
 	
-	function listar($atributos=array(),$orderBy=null) {
+	function listar($atributos=array(),$orderBy=null,$limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
-		$aValores = $sqlGl -> from("email")->where($atributos)->orderBy('id');
+		$aValores = $sqlGl -> from("email")->where($atributos)->limit($limit)->orderBy('id');
 		$aValores = $aValores->fetchAll();
 		$aValores['num'] = count($aValores);
 	

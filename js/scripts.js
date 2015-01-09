@@ -5,7 +5,7 @@
 var pathGeral = "sistemas/geral/";
 
 yepnope([{
-	  load: [ pathSite+"js/bower_components/bootstrap/dist/css/bootstrap.min.css",
+	  load: [ 
 	          pathSite+"js/bower_components/Bootflat/bootflat/css/bootflat.min.css",
 	          pathSite+"js/bower_components/components-font-awesome/css/font-awesome.min.css",
 	          pathSite+"js/bower_components/bootstrap/dist/js/bootstrap.min.js",
@@ -86,6 +86,7 @@ yepnope([{
 		  		  }
 		  		}]);
 		      }
+
 		  	
 		  	/*
 		  	 * FUNCAO PARA FILE INPUT

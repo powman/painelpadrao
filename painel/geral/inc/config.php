@@ -47,6 +47,13 @@
 			$allConfig["smtp"]['from'] = 'nao-responda@pixelgo.com.br';
 			$allConfig["smtp"]['fromName'] = 'Netsuprema';
 			
+			$allConfig["whm"]['dominio'] = 'pixelgo.com.br';
+			$allConfig["whm"]['dominioCpanelCliente'] = 'festgospel.com.br';
+			$allConfig["whm"]['userCpanelCliente'] = 'fest';
+			$allConfig["whm"]['user'] = 'pixel821';
+			$allConfig["whm"]['pass'] = '5fpRvWnB.TCA';
+			$allConfig["whm"]['userDominio'] = 'fest';
+			
 			return $allConfig;
 		
 		}
