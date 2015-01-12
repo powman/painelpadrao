@@ -47,11 +47,11 @@
 			$allConfig["smtp"]['from'] = 'nao-responda@pixelgo.com.br';
 			$allConfig["smtp"]['fromName'] = 'Netsuprema';
 			
-			$allConfig["whm"]['dominio'] = 'pixelgo.com.br';
-			$allConfig["whm"]['dominioCpanelCliente'] = 'festgospel.com.br';
-			$allConfig["whm"]['userCpanelCliente'] = 'fest';
-			$allConfig["whm"]['user'] = 'pixel821';
-			$allConfig["whm"]['pass'] = '5fpRvWnB.TCA';
+			$allConfig["whm"]['dominio'] = '';
+			$allConfig["whm"]['dominioCpanelCliente'] = '';
+			$allConfig["whm"]['userCpanelCliente'] = '';
+			$allConfig["whm"]['user'] = '';
+			$allConfig["whm"]['pass'] = '';
 			
 			return $allConfig;
 		
