@@ -553,7 +553,7 @@ $(function() {
 	//===== Color picker =====//
 	
 	$('#cPicker').ColorPicker({
-		color: '#e62e90',
+		color: '#000000',
 		onShow: function (colpkr) {
 			$(colpkr).fadeIn(500);
 			return false;
@@ -563,7 +563,7 @@ $(function() {
 			return false;
 		},
 		onChange: function (hsb, hex, rgb) {
-			$('#cPicker div').css('backgroundColor', '#' + hex);
+			$('#cPicker input').val('#' + hex);
 		}
 	});
 	
@@ -914,15 +914,7 @@ $(function() {
 	$( ".uiSlider" ).slider(); /* Usual slider */
 	
 	
-	$( ".uiSliderInc" ).slider({ /* Increments slider */
-		value:100,
-		min: 0,
-		max: 500,
-		step: 50,
-		slide: function( event, ui ) {
-			$( "#amount" ).val( "$" + ui.value );
-		}
-	});
+	
 	$( "#amount" ).val( "$" + $( ".uiSliderInc" ).slider( "value" ) );
 		
 		
@@ -1323,15 +1315,14 @@ $("textarea[maxlength]").keypress(function(event){
 
 
 
-function pegarLatLgn(urlMaps){
+function pegarLatLgn(urlMaps,id){
 	if(urlMaps){
 	var aAux = urlMaps.split("@");
 	aAux = aAux[1].split(",");
 	var latitude = aAux[0];
 	var longitude = aAux[1];
 
-	$("#latitude").val(latitude);
-	$("#longitude").val(longitude);
+	$("#"+id).val(latitude+','+longitude);
 	
 	}
 }
@@ -1711,5 +1702,27 @@ function ordemNaTabela(classesw,ctrlOrdem,ctrlSucess){
         }
     });
 }
+
+$(function(){
+	$('.preco').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.'
+    });
+	$('.area').priceFormat({
+		prefix: '',
+		centsSeparator: '.',
+		thousandsSeparator: ''
+	});
+});
+
+function bytesToSize(megabytes) {
+	bytes = parseInt(megabytes) * 1000000;
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    if (i == 0) return bytes + ' ' + sizes[i];
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+};
 
             

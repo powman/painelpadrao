@@ -2,90 +2,48 @@
 <div class="oneThree" style="width:94%; margin: 0 3%;">
     <div class="widget">
         <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Espaço de Disco Rígido - <?php echo $aDados['acct']['domain'];?></h6></div>
+        <div class="body">
+            <h6>
+                <strong>Cliente Desde:</strong> <?php echo date('d/m/Y H:i:s', $aDados['acct']['unix_startdate']);?>
+            </h6>
+            <p>
+               <strong>Usuário:</strong> <?php echo $aDados['acct']['user'];?> 
+            </p>
+            <p>
+               <strong>Domínio:</strong> <?php echo $aDados['acct']['domain'];?> 
+            </p>
+            <p>
+               <strong>Email:</strong> <?php echo $aDados['acct']['email'];?> 
+            </p>
+            <p>
+               <strong>Plano:</strong> <?php echo $aDados['acct']['plan'];?> 
+            </p>
+            <p>
+               <strong>IP:</strong> <?php echo $aDados['acct']['ip'];?> 
+            </p>
+            <p>
+               <strong>Número de Ftps:</strong> <?php echo $aDados['acct']['maxftp'] == 'unlimited' ? 'Ilimitado' : $aDados['acct']['maxftp'];?> 
+            </p>
+            <p>
+               <strong>Número de Emails:</strong> <?php echo $aDados['acct']['maxpop'] == 'unlimited' ? 'Ilimitado' : $aDados['acct']['maxpop'];?> 
+            </p>
+            <p>
+               <strong>Número de Banco de Dados:</strong> <?php echo $aDados['acct']['maxsql'] == 'unlimited' ? 'Ilimitado' : $aDados['acct']['maxsql'];?> 
+            </p>
+            <p>
+               <strong>Número de Subdomínios:</strong> <?php echo $aDados['acct']['maxsub'] == 'unlimited' ? 'Ilimitado' : $aDados['acct']['maxsub'];?> 
+            </p>
+            <p style="color: <?php echo $aDados['acct']['suspended'] ? 'red' : 'green';?>; font-size: 15px;">
+               <strong>Status:</strong> <?php echo $aDados['acct']['suspended'] ? 'Suspenso' : 'Ativo';?> 
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Donut -->
+<div class="oneThree" style="width:94%; margin: 0 3%;">
+    <div class="widget">
+        <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Espaço de Disco Rígido - <?php echo $aDados['acct']['domain'];?></h6></div>
         <div class="body"><div class="pie" id="donut"></div></div>
-    </div>
-</div>
-
-<div style="width:94%; margin: 0 3%;">
-    <div class="widget">
-        <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Contas de FTP - <?php echo $aDados['acct']['domain'];?></h6></div>
-        <div class="body">
-            <div style="margin: 5px 0px;">
-                <h5>
-                   FTP: ftp.<?php echo $aDados['acct']['domain'];?> 
-                </h5>
-                <h5>
-                   PORTA: 21
-                </h5>
-            </div>
-            <table width="100%">
-                <tr>
-                    <td width="50%">
-                       <strong> Usuário</strong>
-                    </td>
-                    <td width="50%">
-                       <strong> Diretório </strong>
-                    </td>
-                </tr>
-                <?php for($i=0;$i<count($aFtps["data"]);$i++):
-                $class = ($i%2 == 0)? '#fff': '#ccc';
-                ?>
-                <tr bgcolor="<?php echo $class;?>">
-                    <td width="50%">
-                        <?php echo $aFtps["data"][$i]['user'];?>
-                    </td>
-                    <td width="50%">
-                        <?php echo $aFtps["data"][$i]['homedir'];?>
-                    </td>
-                </tr>
-                <?php endfor;?>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div style="width:94%; margin: 0 3%;">
-    <div class="widget">
-        <div class="title"><img src="images/icons/dark/stats.png" alt="" class="titleIcon" /><h6>Emails - <?php echo $aDados['acct']['domain'];?></h6></div>
-        <div class="body">
-            
-            <table width="100%">
-                <tr>
-                    <td width="25%">
-                       <strong> Email</strong>
-                    </td>
-                    <td width="25%">
-                       <strong>Disco Usado</strong>
-                    </td>
-                    <td width="25%">
-                       <strong>Tamanho do Disco</strong>
-                    </td>
-                    <td width="25%">
-                       <strong>Espaço Disponível</strong>
-                    </td>
-                </tr>
-                <?php for($i=0;$i<count($aEmails["data"]);$i++):
-                 $class = ($i%2 == 0)? '#fff': '#ccc';
-                ?>
-                <tr bgcolor="<?php echo $class;?>">
-                    <td width="25%">
-                        <?php echo $aEmails["data"][$i]['login'];?>
-                    </td>
-                    <td width="25%">
-                        <?php echo $objUteis->byte_format($aEmails["data"][$i]['diskused'] * 1000);?>
-                    </td>
-                    <td width="25%">
-                        <?php echo is_numeric($aEmails["data"][$i]['diskquota']) ? $objUteis->byte_format($aEmails["data"][$i]['diskquota'] * 1000) : $aEmails["data"][$i]['diskquota'];?>
-                    </td>
-                    <td width="25%">
-                    <?php if($aEmails["data"][$i]['diskquota'] && $aEmails["data"][$i]['diskused'] && $aEmails["data"][$i]['diskquota'] != 0 && $aEmails["data"][$i]['diskused'] != 0):?>
-                        <?php echo $objUteis->byte_format(($aEmails["data"][$i]['diskquota'] - $aEmails["data"][$i]['diskused'])* 1000);?>
-                        <?php endif;?>
-                    </td>
-                </tr>
-                <?php endfor;?>
-            </table>
-        </div>
     </div>
 </div>
 

@@ -561,6 +561,15 @@ function moeda2float(moeda){
 
 }
 
+function bytesToSize(megabytes) {
+	bytes = parseInt(megabytes) * 1000000;
+    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+    if (bytes == 0) return 'n/a';
+    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+    if (i == 0) return bytes + ' ' + sizes[i];
+    return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
+};
+
 // Preloader Body
 /*window.addEventListener('DOMContentLoaded', function() {
     new QueryLoader2(document.querySelector("body"), {

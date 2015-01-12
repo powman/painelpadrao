@@ -52,7 +52,6 @@
 			$allConfig["whm"]['userCpanelCliente'] = 'fest';
 			$allConfig["whm"]['user'] = 'pixel821';
 			$allConfig["whm"]['pass'] = '5fpRvWnB.TCA';
-			$allConfig["whm"]['userDominio'] = 'fest';
 			
 			return $allConfig;
 		

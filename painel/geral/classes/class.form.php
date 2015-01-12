@@ -39,6 +39,7 @@ class Form {
 		
 		echo $formulario;
 	}
+	// OK
 	public function sk_formColor($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '') {
 		if ($required == true) {
 			$required = 'validate[required]';
@@ -111,7 +112,7 @@ class Form {
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
-		$input .= '<input type="text" onblur="pegarLatLgn(this.value)" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
+		$input .= '<input type="text" onblur="pegarLatLgn(this.value,\'' . $nameInput . '\')" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '<a href="https://www.google.com.br/maps/preview" target="_blank">Abrir google maps para pegar o link do mapa</a>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
@@ -478,11 +479,6 @@ class Form {
 		echo $input;
 	}
 	public function sk_formPreco($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
-		$input .= '<script>$(function(){$(\'.preco' . $nameInput . '\').priceFormat({
-                    prefix: \'R$ \',
-                    centsSeparator: \',\',
-                    thousandsSeparator: \'.\'
-                });});</script>';
 		
 		if ($required == true) {
 			$required = 'validate[required]';
@@ -497,18 +493,13 @@ class Form {
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight ' . $tooltip . '" title="' . $textoDescription . '">';
-		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' tags' . $nameInput . ' preco' . $nameInput . '" value="' . $value . '" />';
+		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $nameInput . ' preco" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		
 		echo $input;
 	}
 	public function sk_formArea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
-		$input .= '<script>$(function(){$(\'.area' . $nameInput . '\').priceFormat({
-                    prefix: \'\',
-                    centsSeparator: \'.\',
-                    thousandsSeparator: \'\'
-                });});</script>';
 		
 		if ($required == true) {
 			$required = 'validate[required]';
@@ -523,7 +514,7 @@ class Form {
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight ' . $tooltip . '" title="' . $textoDescription . '">';
-		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' tags' . $nameInput . ' area' . $nameInput . '" value="' . $value . '" />';
+		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' area" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		
@@ -596,6 +587,35 @@ class Form {
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
+		$input .= '</div><div class="clear"></div>';
+		$input .= '</div>';
+		
+		echo $input;
+	}
+	public function sk_formTextSliderByte($nomeLabel = '', $nameInput = '',$minValor = '0', $maxValor = '500',$step='1', $value = '') {
+		
+		$input = " <script>
+		        $(function(){
+	                 $( \".uiSliderInc\" ).slider({ 
+                		value:".($value && $value != 'unlimited' ? $value : $minValor).",
+                		min: ".$minValor.",
+                		max: ".$maxValor.",
+                		step: ".$step.",
+                		slide: function( event, ui ) {
+                			$( \".mudarValor\" ).html( bytesToSize(ui.value) );
+                			$( \"#".$nameInput."\" ).val( ui.value );
+                		}
+                	});
+	            });
+		       
+		        </script>
+		        ";
+		$input .= '<div class="formRow">';
+		$input .= '<label>' . $nomeLabel . '</label>';
+		$input .= '<div class="formRight">';
+		$input .= '<label class="mudarValor">'.($value && $value != 'unlimited' ? $this->formatBytes($value) : $this->formatBytes($minValor)).'</label>';
+		$input .= '<div class="uiSliderInc"></div>';
+		$input .= '<input type="hidden" name="' . $nameInput . '" id="' . $nameInput . '" value="' . ($value && $value != 'unlimited' ? $value : $minValor) . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		
@@ -718,39 +738,39 @@ class Form {
 		
 		if ($arrayFotos) {
 			$funcaoJquery .= '
-<div style="margin-top:20px;" class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>Arquivos:</h6>
-</div>
-';
-			$funcaoJquery .= '
-<div class="gallery" style="background:rgba(0, 0, 0, 0.4)">
-	';
-			$funcaoJquery .= '
-	<ul>
-		';
-			
-			for($i = 0; $i < $arrayFotos ["num"]; $i ++) {
-				if ($urlExcluirArquivo) {
-					$divExcluirArquivo = '
-		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos [$i]->id . '&img=' . $arrayFotos [$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
-		</div>';
-				}
-				$funcaoJquery .= '
-		<li style="width:95px; position:relative; background:#fff; height:100px; overflow:hidden;">
-			';
-				$funcaoJquery .= '<a href="' . $arrayFotos [$i] ->img . '" title="" rel="lightbox">';
-				$funcaoJquery .= '<img src="' . $arrayFotos [$i]->img . '" height="100" alt="" />';
-				$funcaoJquery .= '</a>';
-				$funcaoJquery .= $divExcluirArquivo;
-				$funcaoJquery .= '
-		</li>';
-			}
-			$funcaoJquery .= '
-	</ul>
-	';
-			$funcaoJquery .= '<div class="fix"></div>
-	';
-			$funcaoJquery .= '
-</div>';
+                <div style="margin-top:20px;" class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>Arquivos:</h6>
+                </div>
+                ';
+                			$funcaoJquery .= '
+                <div class="gallery" style="background:rgba(0, 0, 0, 0.4)">
+                	';
+                			$funcaoJquery .= '
+                	<ul>
+                		';
+                			
+                			for($i = 0; $i < $arrayFotos ["num"]; $i ++) {
+                				if ($urlExcluirArquivo) {
+                					$divExcluirArquivo = '
+                		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos [$i]->id . '&img=' . $arrayFotos [$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
+                		</div>';
+                				}
+                				$funcaoJquery .= '
+                		<li style="width:95px; position:relative; background:#fff; height:100px; overflow:hidden;">
+                			';
+                				$funcaoJquery .= '<a href="' . $arrayFotos [$i] ->img . '" title="" rel="lightbox">';
+                				$funcaoJquery .= '<img src="' . $arrayFotos [$i]->img . '" height="100" alt="" />';
+                				$funcaoJquery .= '</a>';
+                				$funcaoJquery .= $divExcluirArquivo;
+                				$funcaoJquery .= '
+                		</li>';
+                			}
+                			$funcaoJquery .= '
+                	</ul>
+                	';
+                			$funcaoJquery .= '<div class="fix"></div>
+                	';
+                			$funcaoJquery .= '
+                </div>';
 		}
 		
 		echo $funcaoJquery;
@@ -891,7 +911,7 @@ class Form {
 		 */
 		// $objForm->sk_montaYoutubeGaleria($produto["videos"],"produto",'index.php?acao=deletarVideosSelecionados');
 		// $funcaoJquery = '<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>';
-		$funcaoJquery = "";
+		$funcaoJquery = '<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>';
 		$funcaoJquery .= '
 	<script>
 ';
@@ -1121,6 +1141,18 @@ $("#' . $idMapa . 'longitude").val(results[0].geometry.location.lng());
 		
 		echo $input;
 	}
+    
+    function formatBytes($bytes, $precision = 2)
+    {
+        $bytes = $bytes * 1000000;
+        // human readable format -- powers of 1000
+        //
+        $unit = array('B','KB','MB','GB','TB','PB','EB');
+    
+        return @round(
+                $bytes / pow(1000, ($i = floor(log($bytes, 1000)))), $precision
+        ).' '.$unit[$i];
+    }
 }
 
 ?>
