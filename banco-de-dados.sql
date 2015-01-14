@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `secao_fixa` (
   `ctrl` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL,
   `ordem` int(11) NOT NULL,
+  `ativar` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -175,6 +176,21 @@ CREATE TABLE IF NOT EXISTS `email` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
+--
+-- Estrutura da tabela `empresa`
+--
+
+CREATE TABLE IF NOT EXISTS `empresa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(255) NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `texto` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Constraints for dumped tables

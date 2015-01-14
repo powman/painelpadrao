@@ -1947,16 +1947,16 @@ function xml2array ( $xmlObject, $out = array () )
 
 
 
-function byte_format($size) {
-    $bytes = array( ' KB', ' MB', ' GB', ' TB' );
-    foreach ($bytes as $val) {
-        if (1024 <= $size) {
-            $size = $size / 1024;
-            continue;
-        }
-        break;
-    }
-    return round( $size, 1 ) . $val;
+function byte_format($bytes, $precision = 2)
+{
+    $bytes = $bytes * 1000000;
+    // human readable format -- powers of 1000
+    //
+    $unit = array('B','KB','MB','GB','TB','PB','EB');
+
+    return @round(
+            $bytes / pow(1000, ($i = floor(log($bytes, 1000)))), $precision
+    ).' '.$unit[$i];
 }
 
 

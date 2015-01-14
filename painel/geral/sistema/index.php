@@ -207,34 +207,50 @@ $configuracao = Config::AtributosConfig(); ?>
             <ul class="sub">
                 
                 <li><a href="index.php?acao=listar&ctrl=cpanel" title="">Detalhes</a></li>
+                <?php if($configuracao['permissao']['emailCpanel']): ?>
                 <li><a href="index.php?acao=criar-email&ctrl=cpanel" title="">-- Criar Email</a></li>
                 <li><a href="index.php?acao=listar-emails&ctrl=cpanel" title="">-- Listar Emails</a></li>
-                <li><a href="index.php?acao=criar-ftp&ctrl=cpanel" title="">-- Criar Ftp</a></li>
-                <li><a href="index.php?acao=listar-ftp&ctrl=cpanel" title="">-- Listar Ftp</a></li>
+                <?php endif;?>
+                <?php if($configuracao['permissao']['ftpCpanel']): ?>
+                    <li><a href="index.php?acao=criar-ftp&ctrl=cpanel" title="">-- Criar Ftp</a></li>
+                    <li><a href="index.php?acao=listar-ftp&ctrl=cpanel" title="">-- Listar Ftp</a></li>
+                <?php endif;?>
                 
             </ul>
         </li>
         <?}?>
+        <?php if($configuracao['permissao']['formulario']): ?>
         <li><a href="#" title="" class="exp"><span style="background-image:url('images/icons/light/create.png')">Formulários</span></a>
             <ul class="sub">
                 <?
                         if($objSession2->get('tlAdmLoginNivel') == 1){
                              ?>
+                <?php if($configuracao['permissao']['formularioCriar']): ?>
                 <li><a href="index.php?acao=frmCad&ctrl=configuracoes" title="">Cadastrar email de recebimento</a></li>
+                <?php endif;?>
                 <?}?>
+                <?php if($configuracao['permissao']['formularioListar']): ?>
                 <li><a href="index.php?acao=listar&ctrl=configuracoes" title="">Listar emails de recebimento</a></li>
+                <?php endif;?>
             </ul>
         </li>
+        <?php endif;?>
+        <?php if($configuracao['permissao']['modulo']): ?>
         <li><a href="#" title="" class="exp"><span style="background-image:url('images/icons/light/cog3.png')">Módulos</span></a>
             <ul class="sub">
                 <?
                         if($objSession2->get('tlAdmLoginNivel') == 1){
                              ?>
+                <?php if($configuracao['permissao']['moduloCriar']): ?>
                 <li><a href="index.php?acao=frmCad&ctrl=modulo" title="">Cadastrar módulo</a></li>
+                <?php endif;?>
                 <?}?>
+                <?php if($configuracao['permissao']['moduloListar']): ?>
                 <li><a href="index.php?acao=listar&ctrl=modulo" title="">Listar módulos</a></li>
+                <?php endif;?>
             </ul>
         </li>
+        <?php endif;?>
         <?}?>
         <?
         
@@ -297,27 +313,63 @@ $configuracao = Config::AtributosConfig(); ?>
         <div class="smalldd">
             <span class="goTo"><img src="images/icons/light/frames.png" alt="" />Menu</span>
             <ul class="smallDropdown">
+                
                 <li><a href="index.php" title=""><img src="images/icons/light/home.png" alt="" />Início</a></li>
+                <?
+                if($objSession2->get('tlAdmLoginNivel') == 1){
+                     ?>
+                <?
+               if($objSession2->get('tlAdmLoginNivel') == 1 && $configuracao["whm"]['dominio'] && $configuracao["whm"]['user'] && $configuracao["whm"]['pass'] && $configuracao["whm"]['userCpanelCliente']){
+                     ?>     
+                <li><a href="#" title="" class="exp"><img src="images/icons/light/create.png" alt="" />Hospedagem do Site</a>
+                    <ul class="sub">
+                        
+                        <li><a href="index.php?acao=listar&ctrl=cpanel" title="">Detalhes</a></li>
+                        <?php if($configuracao['permissao']['emailCpanel']): ?>
+                        <li><a href="index.php?acao=criar-email&ctrl=cpanel" title="">-- Criar Email</a></li>
+                        <li><a href="index.php?acao=listar-emails&ctrl=cpanel" title="">-- Listar Emails</a></li>
+                        <?php endif;?>
+                        <?php if($configuracao['permissao']['ftpCpanel']): ?>
+                            <li><a href="index.php?acao=criar-ftp&ctrl=cpanel" title="">-- Criar Ftp</a></li>
+                            <li><a href="index.php?acao=listar-ftp&ctrl=cpanel" title="">-- Listar Ftp</a></li>
+                        <?php endif;?>
+                        
+                    </ul>
+                </li>
+                <?}?>
+                <?php if($configuracao['permissao']['formulario']): ?>
                 <li><a href="#" title="" class="exp"><img src="images/icons/light/create.png" alt="" />Formulários</a>
                     <ul class="sub">
                         <?
                         if($objSession2->get('tlAdmLoginNivel') == 1){
                              ?>
+                        <?php if($configuracao['permissao']['formularioCriar']): ?>     
                         <li><a href="index.php?acao=frmCad&ctrl=configuracoes" title="">Cadastrar email de recebimento</a></li>
+                        <?php endif;?>
                         <?}?>
+                        <?php if($configuracao['permissao']['formularioListar']): ?>
                         <li><a href="index.php?acao=listar&ctrl=configuracoes" title="">Listar emails de recebimento</a></li>
+                        <?php endif;?>
                     </ul>
                 </li>
+                <?php endif;?>
+                <?php if($configuracao['permissao']['modulo']): ?>
                 <li><a href="#" title="" class="exp"><img src="images/icons/light/cog3.png" alt="" />Módulos</a>
                     <ul class="sub">
                         <?
                         if($objSession2->get('tlAdmLoginNivel') == 1){
                              ?>
+                        <?php if($configuracao['permissao']['moduloCriar']): ?>
                         <li><a href="index.php?acao=frmCad&ctrl=modulo" title="">Cadastrar módulo</a></li>
+                        <?php endif;?>
                         <?}?>
+                        <?php if($configuracao['permissao']['moduloListar']): ?>
                         <li><a href="index.php?acao=listar&ctrl=modulo" title="">Listar módulos</a></li>
+                        <?php endif;?>
                     </ul>
                 </li>
+                <?php endif;?>
+                <?php }?>
                 <?for($i=0;$i<$secoes_fixas["num"];$i++){
                     $sem_acento = $objUteis->nameArq(utf8_decode($secoes_fixas[$i]->titulo));
                     $permissao2 = $objSecao->permissaoSecaoFixaUsuario($secoes_fixas[$i]->id,$objSession2->get('tlAdmLoginId'));

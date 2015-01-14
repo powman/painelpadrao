@@ -52,8 +52,9 @@
 
 $(function () {
 	var data = [
-	        	{ label: "Disco Livre <?php echo $objUteis->byte_format($aDados['acct']['disklimit'] * 1000);?>", data: <?php echo str_replace("M", "", $aDados['acct']['disklimit']) - str_replace("M", "", $aDados['acct']['diskused'])?> },
-	        	{ label: "Disco Usado <?php echo $objUteis->byte_format($aDados['acct']['diskused'] * 1000);?>", data: <?php echo str_replace("M", "", $aDados['acct']['diskused'])?> }
+                { label: "Disco Total <?php echo $objUteis->byte_format(str_replace("M", "", $aDados['acct']['disklimit']));?>" },
+	        	{ label: "Disco Restante <?php echo $objUteis->byte_format((str_replace("M", "", $aDados['acct']['disklimit']) - str_replace("M", "", $aDados['acct']['diskused'])));?>", data: <?php echo str_replace("M", "", $aDados['acct']['disklimit']) - str_replace("M", "", $aDados['acct']['diskused'])?> },
+	        	{ label: "Disco Usado <?php echo $objUteis->byte_format($aDados['acct']['diskused']);?>", data: <?php echo str_replace("M", "", $aDados['acct']['diskused'])?> }
 	];
 
 

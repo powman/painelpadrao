@@ -13,7 +13,7 @@ $objForm->sk_formTextSliderByte('Espaço em Disco','quota',50,900,50,$aEmails['d
 
 $objForm->sk_formHidden('email',$aEmails['data']['user']);
 
-$objForm->sk_formTextPassword('Senha','senha','255',false,'Aqui você escreve a senha do email.');
+$objForm->sk_formTextPassword('Senha','senha','255',false,'Aqui você escreve a senha do email, Letras e números, não pode ser sequencial','',8);
 
 //Verfica se o usuário e Administrador
 if($objSession2->get('tlAdmLoginNivel') == 1){

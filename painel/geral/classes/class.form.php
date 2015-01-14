@@ -119,10 +119,14 @@ class Form {
 		
 		echo $input;
 	}
-	public function sk_formTextPassword($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
-		if ($required == true) {
-			$required = 'validate[required]';
+	public function sk_formTextPassword($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '',$minSize='') {
+	    if($minSize)
+	        $minsize = 'minSize['.$minSize.']';
+	    if ($required == true) {
+			$required = 'validate[required,minSize[6]]';
 			$addAsteristico = '<span class="req">*</span>';
+		}else if($minSize){
+		    $required = 'validate['.$minsize.']';
 		}
 		if ($descripton) {
 			$tooltip = 'tipS';

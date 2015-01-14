@@ -38,7 +38,8 @@
 			$allConfig["siteCliente"] = "http://www.netsuprema.com.br/";
 			
 			## INI - Site do cliente ##
-			$allConfig["urllogo"] = "http://pixelgo.com.br/img/marca.png";
+			$allConfig["urllogo"] = "";
+			//$allConfig["urllogo"] = "http://pixelgo.com.br/img/marca.png";
 			
 			$allConfig["smtp"]['host'] = 'ssl://smtp.gmail.com';
 			$allConfig["smtp"]['user'] = 'nao-responda@pixelgo.com.br';
@@ -47,11 +48,20 @@
 			$allConfig["smtp"]['from'] = 'nao-responda@pixelgo.com.br';
 			$allConfig["smtp"]['fromName'] = 'Netsuprema';
 			
-			$allConfig["whm"]['dominio'] = '';
-			$allConfig["whm"]['dominioCpanelCliente'] = '';
-			$allConfig["whm"]['userCpanelCliente'] = '';
-			$allConfig["whm"]['user'] = '';
-			$allConfig["whm"]['pass'] = '';
+			
+			$allConfig["whm"]['dominioCpanelCliente'] = 'adugo.com.br';
+			$allConfig["whm"]['userCpanelCliente'] = 'adugocom';
+			$allConfig["whm"]['dominio'] = 'netsuprema.com.br';
+			$allConfig["whm"]['user'] = 'netsupre';
+			$allConfig["whm"]['pass'] = 'adm@2015@n49tsuprema';
+			$allConfig["permissao"]['emailCpanel'] = true;
+			$allConfig["permissao"]['ftpCpanel'] = false;
+			$allConfig["permissao"]['formulario'] = true;
+			$allConfig["permissao"]['formularioCriar'] = true;
+			$allConfig["permissao"]['formularioListar'] = true;
+			$allConfig["permissao"]['modulo'] = true;
+			$allConfig["permissao"]['moduloCriar'] = true;
+			$allConfig["permissao"]['moduloListar'] = true;
 			
 			return $allConfig;
 		

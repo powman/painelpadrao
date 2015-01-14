@@ -239,29 +239,22 @@ $(function() {
         
         if(document.getElementById("editor") != null){
 
-        CKEDITOR.replace( 'editor',
-               {
-                  forcePasteAsPlainText : true ,
-                  removeButtons : 'Underline,Subscript,Superscript',
-                  enterMode : CKEDITOR.ENTER_BR ,
-                  contentsCss : 'css/fckeditor.css',
-                  format_tags : 'p;h1;h2;h3;h4;h5;h6;pre;address;div;u',
-                  format_h1 : { element : 'h1', attributes : { 'class' : 'h1' } },
-                  format_h2 : { element : 'h2', attributes : { 'class' : 'h2' } } ,
-                  format_h3 : { element : 'h3', attributes : { 'class' : 'h3' } } ,
-                  format_h4 : { element : 'h4', attributes : { 'class' : 'h4' } },
-                  format_h5 : { element : 'h5', attributes : { 'class' : 'h5' } } ,
-                  format_h6 : { element : 'h6', attributes : { 'class' : 'h6' } },
-                  format_p : { element : 'p', attributes : { 'class' : 'p' } },
-                  format_u : { element : 'u', attributes : { 'class' : 'u' } },
-                  format_div : { element : 'p', attributes : { 'class' : 'div' } },
-                  format_pre : { element : 'pre', attributes : { 'class' : 'pre' } },
-                  filebrowserBrowseUrl : ' ../sistema/php/filebrowser.php?action=browse',
-	          filebrowserUploadUrl : ' ../sistema/php/filebrowser.php?action=upload',
-                  resize_enabled : false
-                  
-                  
-               });
+    	CKEDITOR.replace( 'editor',
+                {
+                   forcePasteAsPlainText : true ,
+                   removeButtons : 'Underline,Subscript,Superscript',
+                   enterMode : CKEDITOR.ENTER_BR ,
+                   contentsCss : 'css/fckeditor.css',
+                   filebrowserBrowseUrl : '../sistema/kcfinder/browse.php?type=files',
+                   filebrowserImageBrowseUrl : '../sistema/kcfinder/browse.php?type=images',
+                   filebrowserFlashBrowseUrl : '../sistema/kcfinder/browse.php?type=flash',
+                   filebrowserUploadUrl : '../sistema/kcfinder/upload.php?type=files',
+                   filebrowserImageUploadUrl : '../sistema/kcfinder/upload.php?type=images',
+                   filebrowserFlashUploadUrl : '../sistema/kcfinder/upload.php?type=flash',
+                   resize_enabled : false
+                   
+                   
+                });
                
         }
                

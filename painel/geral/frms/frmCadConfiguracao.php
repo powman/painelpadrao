@@ -20,6 +20,8 @@ $objForm->sk_inicioWizard('Página de recebimento do formulário');
 //Cria um Select input
 $objForm->sk_formSelect('Página','tipo',$options,true,"Aqui você escolhe um nome para o usuário que vai receber o email da página.");
 
+$objForm->sk_formTextHTML('Página','tipo',true,"Aqui você escolhe um nome para o usuário que vai receber o email da página.");
+
 //Fim do Wizard
 $objForm->sk_fimWizard();
 

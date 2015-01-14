@@ -11,7 +11,7 @@
 		function listar_fixas(){
 			//chamada ao objeto da classe de abstração de banco de dados
 			global $sqlGl;
-			$aValores = $sqlGl -> from("secao_fixa")->orderBy('ordem ASC');
+			$aValores = $sqlGl -> from("secao_fixa")->where('ativar',1)->orderBy('ordem ASC');
 			$aValores = $aValores->fetchAll();
 			$aValores['num'] = count($aValores);
 			
