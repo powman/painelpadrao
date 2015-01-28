@@ -7,13 +7,12 @@ RewriteCond %{REQUEST_FILENAME} !-d
 
 
 #RewriteRule ^imovel/(.*)$ index.php?acao=imovel-detalhes&atributos=$1
+RewriteRule ^([0-9a-zA-Z_-]+)$ index.php?acao=$1
 
 
-
-#formato da imagem sem logo
 #http://agendagospelgyn.com.br/images/w590/h550/painel/geral/sistema/arq_galerias/fotos/18/0201301120642020.jpg
 
-#formato da imagem com logo
+
 #http://agendagospelgyn.com.br/images/w590/logo1/painel/geral/sistema/arq_galerias/fotos/18/0201301120642020.jpg
 
 RewriteRule ^imagem\/(.*)$ gt.php?thumb=$1
@@ -26,13 +25,8 @@ RewriteRule ^imagem_water\/(.*)$ gt.php?thumb=$1&l=test
     Options -Indexes
 </IfModule>
 
-
-#Agora vamos eliminar a �assinatura� do servidor que � exibida nas p�ginas de erro:
 ServerSignature Off
 
-
-
-#Resumidamente, Entity tags (ETags) s�o um tipo de mecanismo feito para checar se existe uma nova vers�o do arquivo em cache. Com esse mecanismo desabilitado, n�s impedimos que o cache ou o browser fiquem tentando fazer a valida��o, portanto ele � for�ado a utilizar Cache-Control e Expires header (faleremos desses dois daqui a pouco). Para disabilitar o ETag:
 <IfModule mod_headers.c>
   Header unset ETag
 </IfModule>
@@ -40,9 +34,6 @@ ServerSignature Off
 FileETag None
 
 
-
-
-#Combinado com o gzip, um cache bem configurado pode diminuir em at� 90% o tempo de carregamento da p�gina.
 <IfModule mod_expires.c>
 	ExpiresActive on
 	ExpiresDefault                          "access plus 1 month"
@@ -90,7 +81,6 @@ FileETag None
 </IfModule>
 
 
-#Essas diretivas ir�o melhorar o desempenho no nosso querido Internet Explorer, for�ando-o a sempre carregar utilizando a �ltima vers�o dispon�vel (ou utilizar o chrome frame, caso esteja instalado):
 <IfModule mod_headers.c>
     Header set X-UA-Compatible "IE=Edge,chrome=1"
     <FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
@@ -99,6 +89,5 @@ FileETag None
 </IfModule>
 
 
-#O trecho abaixo ir� redirecionar http://dominio.com.br para http://www.dominio.com.br
 #RewriteCond %{HTTP_HOST} !^www\..+$ [NC]
 #RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

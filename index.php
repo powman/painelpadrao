@@ -16,7 +16,7 @@ include 'ctrl.php';
         <meta name="revisit-after" content="1 day" />
         <meta name="distribution" content="Global" />
         <meta name="rating" content="General" />
-        <meta name="author" content="Paulowebsite - Crialçao de sites" />
+        <meta name="author" content="Paulowebsite - Criaçao de sites" />
         <meta name="language" content="pt-br" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         
@@ -37,6 +37,7 @@ include 'ctrl.php';
         <![endif]-->
         
         <link href="<?= $path["site"] ?>js/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="<?= $path["site"] ?>js/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css"/>
 	    <link href="<?= $path["site"] ?>css/all.css" rel="Stylesheet"/>
 
         <?php ob_end_flush(); flush();?>

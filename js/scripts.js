@@ -6,13 +6,8 @@ var pathGeral = "sistemas/geral/";
 
 yepnope([{
 	  load: [ 
-	          pathSite+"js/bower_components/Bootflat/bootflat/css/bootflat.min.css",
 	          pathSite+"js/bower_components/components-font-awesome/css/font-awesome.min.css",
 	          pathSite+"js/bower_components/bootstrap/dist/js/bootstrap.min.js",
-	          pathSite+"js/bower_components/Bootflat/bootflat/js/icheck.min.js", 
-	          pathSite+"js/bower_components/Bootflat/bootflat/js/jquery.fs.selecter.min.js", 
-	          pathSite+"js/bower_components/Bootflat/bootflat/js/jquery.fs.stepper.min.js", 
-	          pathSite+"js/bower_components/Bootflat/js/application.js", 
 	          pathSite+"js/bower_components/modernizr/modernizr.js", 
 	          pathSite+"js/bower_components/jquery-mousewheel/jquery.mousewheel.min.js", 
 	          pathSite+"js/bower_components/noty/js/noty/packaged/jquery.noty.packaged.min.js", 
