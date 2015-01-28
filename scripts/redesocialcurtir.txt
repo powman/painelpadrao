@@ -1,24 +1,23 @@
 <div>
-                        <div class="principalBlog11">
-                        <fb:like href="http://www.padraoind.com.br/sitenovo/postagem/<?=$objUteis->urlName(utf8_decode($postagem->titulo))?>_<?=$postagem->id?>_.html" layout="button_count" show-faces="true" width="100" action="like" colorscheme="light" style="margin-right: 45px;"/>
-                        </div>
-                        <div class="principalBlog11">
-                        <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="http://www.twitter.com/festgospelsite" rel="nofollow">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                        </div>
-                        <div class="principalBlog12">
-                            <!-- Coloque esta tag onde voc? deseja que o bot?o +1 seja renderizado -->
-                            <g:plusone size="medium" href="http://www.padraoind.com.br/sitenovo/postagem/<?=$objUteis->urlName(utf8_decode($postagem->titulo))?>_<?=$postagem->id?>_.html"></g:plusone>
+    <div class="principalBlog11">
+    <fb:like href="" layout="button_count" show-faces="true" width="100" action="like" colorscheme="light" style="margin-right: 45px;"/>
+    </div>
+    <div class="principalBlog11">
+    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="http://www.twitter.com/festgospelsite" rel="nofollow">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    </div>
+    <div class="principalBlog12">
 
-                            <!-- Coloque esta chamada de renderiza??o conforme necess?rio -->
-                            <script type="text/javascript">
-                              window.___gcfg = {lang: 'pt-BR'};
+        <g:plusone size="medium" href=""></g:plusone>
 
-                              (function() {
-                                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                                po.src = 'https://apis.google.com/js/plusone.js';
-                                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                              })();
-                            </script>
-                        </div>
-                        <div class="principalBlog13"></div>
-                    </div>
+        <script type="text/javascript">
+          window.___gcfg = {lang: 'pt-BR'};
+
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+    </div>
+    <div class="principalBlog13"></div>
+</div>

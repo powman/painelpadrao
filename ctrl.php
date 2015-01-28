@@ -29,6 +29,10 @@ $objPost = new gp();
 include_once $path["classes"] ."class.Correios.php";
 $objCorreios = new Correios();
 
+//inclui a classe de email
+include_once $path["classes"] ."class.Email.php";
+$objEmail = new Email();
+
 $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
@@ -55,7 +59,7 @@ switch ($objPost->param["acao"]) {
 
     case 'envia-contato':
     	$condicao = array(
-    				'tipo' => "'Fale Conosco'",
+    				'tipo' => "Fale Conosco",
     				'status' => 1
     			);
     	
