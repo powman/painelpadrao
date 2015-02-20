@@ -303,7 +303,7 @@ class Uteis {
 
         if (strlen($string) > $maximo) {
 
-            $texto = substr($string, 0, $maximo) . "...";
+            $texto = utf8_encode(substr(utf8_decode($string), 0, $maximo)) . "...";
         } else {
 
             $texto = $string;
