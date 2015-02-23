@@ -36,7 +36,7 @@ $objEmail = new Email();
 $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
-$meta->og['image'] = "http://" . $_SERVER['SERVER_NAME'] . "/imagem/100x100/img/facebooklogo/logo.png";
+$meta->og['image'] = "http://" . $_SERVER['SERVER_NAME'] . "/imagem/100x100/img/".base64_encode('facebooklogo/logo.png');
 $meta->og['title'] = "";
 $meta->og['description'] = "";
 

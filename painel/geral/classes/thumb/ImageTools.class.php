@@ -52,8 +52,10 @@
 		 
 		public function ImageTools($path_to_image)
 		{
-			if( file_exists($path_to_image) && is_file($path_to_image) )
+		    $image_mime = image_type_to_mime_type(exif_imagetype($path_to_image)); 
+			if($image_mime['mime'] != 'application/octet-stream')
 			{
+			    
 				// Check Type
 				$split = explode(".", $path_to_image);
 				$extension = strtoupper($split[ count($split)-1 ]);

@@ -1960,6 +1960,17 @@ function byte_format($bytes, $precision = 2)
 }
 
 
+function imageEncodeDecode64($imagem, $tipo='encode'){
+   if($tipo == 'encode'){
+       return base64_encode($imagem);
+   }else if($tipo == 'decode'){
+       return base64_decode($imagem);
+   }else{
+       return $imagem;
+   }
+}
+
+
 
 
 

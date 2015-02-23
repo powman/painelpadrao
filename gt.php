@@ -9,7 +9,7 @@ include('painel/geral/classes/thumb/ImageTools.class.php');
 
 // ensure there was a thumb in the URL
 if (!$_GET['thumb']) {
-    error('no thumb');
+    //error('no thumb');
 }
 
 // get the thumbnail from the URL
@@ -21,9 +21,10 @@ $size = array_shift($thumb_array);
 $image = '' . implode('/', $thumb_array);
 list($width, $height) = explode('x', $size);
 
-if(file_exists($image)){
-	
-}else{
+$image = base64_decode($image);
+$image_mime = image_type_to_mime_type(exif_imagetype($image));
+
+if($image_mime == 'application/octet-stream'){
 	$image	= "img/sem_foto.gif";
 }
 
@@ -37,5 +38,6 @@ if($width && $height){
 }
 $img->showImage();
 $img->destroy();
+
 exit();
 ?>

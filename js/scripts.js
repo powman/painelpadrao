@@ -565,6 +565,41 @@ function bytesToSize(megabytes) {
     return (bytes / Math.pow(1024, i)).toFixed(1) + ' ' + sizes[i];
 };
 
+function pesquisarHome(id){
+	
+	var params = $('#'+id).serialize();
+	
+	var aValor = params.split('&');
+	var url = '';
+	
+	var aIndices = new Array();
+	var oURL     = {};
+	
+	for(var i in aValor){
+		var aValorAux = aValor[i].split('=');
+		
+		if(aValorAux[1]) {
+			if (aIndices.indexOf(aValorAux[0]) == -1) {
+				aIndices.push(aValorAux[0]);
+				//url += '/'+aValorAux[0]+'/'+aValorAux[1];
+				oURL[aValorAux[0]] = aValorAux[1];
+			} else {
+				oURL[aValorAux[0]] = oURL[aValorAux[0]] + '-' + aValorAux[1];
+				//url += '/'+aValorAux[0]+'/'+aValorAux[1];
+			}
+		}
+	}
+	window.location.href=pathSite+"busca/"+ereJoin(oURL)+"pagina/1";
+}
+
+function ereJoin(obj) {
+	var url = '';
+	for (var i in obj) {
+		url += i + '/' + obj[i] + '/';
+	}
+	return url;
+}
+
 // Preloader Body
 /*window.addEventListener('DOMContentLoaded', function() {
     new QueryLoader2(document.querySelector("body"), {
