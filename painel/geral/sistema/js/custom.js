@@ -251,7 +251,40 @@ $(function() {
                    filebrowserUploadUrl : '../sistema/kcfinder/upload.php?type=files',
                    filebrowserImageUploadUrl : '../sistema/kcfinder/upload.php?type=images',
                    filebrowserFlashUploadUrl : '../sistema/kcfinder/upload.php?type=flash',
-                   resize_enabled : false
+                   resize_enabled : false,
+                   extraPlugins : 'iframedialog,iframe,filebrowser,uicolor,colorbutton,panelbutton,button,lineutils,pagebreak,qrc,ckwebspeech,youtube',
+                   oembed_WrapperClass : 'embededContent',
+                   oembed_maxWidth : '560',
+                   oembed_maxHeight : '315',
+                   toolbarGroups: [
+                           		{ name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+								{ name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+								{ name: 'links' },
+								{ name: 'insert' },
+								{ name: 'tools' },
+								{ name: 'document',	   groups: [ 'mode', 'document', 'doctools' ] },
+								{ name: 'others' },
+								'/',
+								{ name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+								{ name: 'paragraph',   groups: [ 'list', 'indent', 'blocks', 'align' ] },
+								{ name: 'colors' },
+								{ name: 'styles' },
+								{ name: 'youtube' },
+                           	],
+                   	ckwebspeech : {'culture' : 'en-us',
+                   'commandvoice' : 'command',   //trigger voice commands
+                   'commands': [                 //command list
+                               {'newline': 'new line'},            //trigger to add a new line in CKEditor
+                               {'newparagraph': 'new paragraph'},  //trigger to add a new paragraph in CKEditor
+                               {'undo': 'undo'},                   //trigger to undo changes in CKEditor
+                               {'redo': 'redo'}                    //trigger to redo changes in CKEditor
+                            ]
+                         },
+                         youtube_width : '640',
+                         youtube_height : '480',
+                         youtube_related : true,
+                         youtube_older : false,
+                         youtube_privacy : false
                    
                    
                 });
