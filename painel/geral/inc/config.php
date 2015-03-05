@@ -41,20 +41,20 @@
 			$allConfig["urllogo"] = "";
 			//$allConfig["urllogo"] = "http://pixelgo.com.br/img/marca.png";
 			
-			$allConfig["smtp"]['host'] = 'ssl://smtp.gmail.com';
-			$allConfig["smtp"]['user'] = 'nao-responda@pixelgo.com.br';
-			$allConfig["smtp"]['senha'] = 'pix==123';
-			$allConfig["smtp"]['port'] = '465';
-			$allConfig["smtp"]['from'] = 'nao-responda@pixelgo.com.br';
+			$allConfig["smtp"]['host'] = 'smtplw.com.br';
+			$allConfig["smtp"]['user'] = 'sincopecasgoias';
+			$allConfig["smtp"]['senha'] = 'apPgsxsN6915';
+			$allConfig["smtp"]['port'] = '587';
+			$allConfig["smtp"]['from'] = 'newsletter@sincopecas-go.com.br';
 			$allConfig["smtp"]['fromName'] = 'Netsuprema';
 			
 			
-			$allConfig["whm"]['dominioCpanelCliente'] = 'adugo.com.br';
-			$allConfig["whm"]['userCpanelCliente'] = 'adugocom';
-			$allConfig["whm"]['dominio'] = 'netsuprema.com.br';
-			$allConfig["whm"]['user'] = 'netsupre';
-			$allConfig["whm"]['pass'] = 'adm@2015@n49tsuprema';
-			$allConfig["permissao"]['emailCpanel'] = true;
+// 			$allConfig["whm"]['dominioCpanelCliente'] = 'adugo.com.br';
+// 			$allConfig["whm"]['userCpanelCliente'] = 'adugocom';
+// 			$allConfig["whm"]['dominio'] = 'netsuprema.com.br';
+// 			$allConfig["whm"]['user'] = 'netsupre';
+// 			$allConfig["whm"]['pass'] = 'adm@2015@n49tsuprema';
+			$allConfig["permissao"]['emailCpanel'] = false;
 			$allConfig["permissao"]['ftpCpanel'] = false;
 			$allConfig["permissao"]['formulario'] = true;
 			$allConfig["permissao"]['formularioCriar'] = true;

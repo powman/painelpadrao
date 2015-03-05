@@ -10,7 +10,7 @@
 include_once "classes/class.Empresa.php";
 $objEmpresa = new Empresa();
 
-$permissao = $objSecao->permissaoSecaoFixaUsuario("2",$objSession2->get('tlAdmLoginId'));
+$permissao = $objSecao->permissaoSecaoFixaUsuario("3",$objSession2->get('tlAdmLoginId'));
 
 //verifica qual a ação está sendo solicitada pela câmada de visão(formulários)
 switch ($_REQUEST['acao']) {

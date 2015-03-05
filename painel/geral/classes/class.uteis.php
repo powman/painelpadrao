@@ -1929,7 +1929,9 @@ public function enviaEmail($emails=null, $msg=null, $replyTo=null, $assunto=null
 	}
 	$mail->IsHTML(true); // send as HTML
 	$result = false;
+	$resultado  = $mail->send();
 	if ($mail->send()) {
+	    
 		$result = true;
 	}
 	
@@ -1968,6 +1970,16 @@ function imageEncodeDecode64($imagem, $tipo='encode'){
    }else{
        return $imagem;
    }
+}
+
+function acrescentaElementArray($value){
+    $aValores = $_SESSION['CACHE_IMOVEL'];
+    $iQtdArray = count($_SESSION['CACHE_IMOVEL']);
+    $iReg = ($iQtdArray < 2 ? $iQtdArray : 2);
+    for ($i=$iReg;$i>0;$i--){
+        $_SESSION['CACHE_IMOVEL'][$i] = $_SESSION['CACHE_IMOVEL'][$i-1];
+    }
+    $_SESSION['CACHE_IMOVEL'][0] = $value;
 }
 
 

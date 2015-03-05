@@ -98,6 +98,30 @@ switch ($objPost->param["acao"]) {
     
     break;
     
+    
+    case 'envia-contato2':
+         
+        $msg = array();
+        $msg[0]['tipo'] = 'Nome:';
+        $msg[0]['msg'] = 'teste';
+         
+        $emailsAEnviar = array();
+        $emailsAEnviar[] = 'paulo@pixelgo.com.br';
+    
+        $result = $objUteis->enviaEmail($emailsAEnviar,$msg,$conf["smtp"]['from'],'Formulário de contato - site.');
+    
+        if (!$result) {
+            $resposta['situacao'] = "error";
+            $resposta['msg'] = "Erro ao enviar.";
+        } else {
+            $resposta['situacao'] = "sucess";
+            $resposta['msg'] = "Enviado com sucesso.";
+        }
+    
+        echo json_encode($resposta);
+    
+        break;
+    
     case "listarCidades":
         $cidades = $objCurr->getCidadesByEstado($_REQUEST["uf"]);
         $objUteis->encode($cidades);

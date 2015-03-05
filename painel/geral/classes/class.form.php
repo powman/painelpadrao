@@ -787,6 +787,8 @@ class Form {
 			$formulario .= 'ordemNaTabela("dTableAff","' . $acaoOrdenar . '","index.php?acao=listar&ctrl=' . $ctrl . '");';
 			$formulario .= ' });';
 			$formulario .= '</script>';
+		}else{
+		    $tableClasse = 'dTable';    
 		}
 		
 		$formulario .= '
@@ -813,7 +815,7 @@ class Form {
 		</div>
 		';
 		$formulario .= '
-		<table cellpadding="0" cellspacing="0" border="0" class="display withCheck dTableAff">
+		<table cellpadding="0" cellspacing="0" border="0" class="display withCheck dTableAff '.$tableClasse.'">
 			';
 		$formulario .= '
 			<thead>
