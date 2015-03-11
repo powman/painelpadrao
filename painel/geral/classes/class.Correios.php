@@ -2,7 +2,7 @@
 class Correios {
 	
 	
-	function listar_estados($atributos=array(),$orderBy=null, $limit=null) {
+	function listar_estado($atributos=array(),$orderBy=null, $limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
@@ -13,7 +13,7 @@ class Correios {
 		return $aValores;
 	}
 	
-	function lista_estados($atributos=array(),$orderBy=null) {
+	function lista_estado($atributos=array(),$orderBy=null) {
 	    //chamada ao objeto da classe de abstração de banco de dados
 	    global $sqlGl;
 	
@@ -22,7 +22,7 @@ class Correios {
 	    return $aValores;
 	}
 	
-	function listar_cidades($atributos=array(),$orderBy=null, $limit=null) {
+	function listar_cidade($atributos=array(),$orderBy=null, $limit=null) {
 		//chamada ao objeto da classe de abstração de banco de dados
 		global $sqlGl;
 		
@@ -33,7 +33,7 @@ class Correios {
 		return $aValores;
 	}
 	
-	function lista_cidades($atributos=array(),$orderBy=null) {
+	function lista_cidade($atributos=array(),$orderBy=null) {
 	    //chamada ao objeto da classe de abstração de banco de dados
 	    global $sqlGl;
 	
@@ -42,7 +42,7 @@ class Correios {
 	    return $aValores;
 	}
 	
-	function listar_bairros($atributos=array(),$orderBy=null, $limit=null) {
+	function listar_bairro($atributos=array(),$orderBy=null, $limit=null) {
 	    //chamada ao objeto da classe de abstração de banco de dados
 	    global $sqlGl;
 	
@@ -59,7 +59,7 @@ class Correios {
 	    return $aValores;
 	}
 	
-	function lista_bairros($atributos=array(),$orderBy=null) {
+	function lista_bairro($atributos=array(),$orderBy=null) {
 	    //chamada ao objeto da classe de abstração de banco de dados
 	    global $sqlGl;
 	

@@ -130,6 +130,71 @@ yepnope([{
 		  		}]);
 		  	}
 		  	
+		  	
+		  	
+		  	/*
+		  	 * 
+		  	 * <select data-placeholder="Selecione uma cidade" multiple="multiple" id="cidadespesquisa" style="width: 100%;" name="idcidade" class="chosen-select">
+			        <?php 
+			        
+			        foreach ($cidadesFull as $cidade):
+			        
+			        $ciSessao = explode("-",$atributos["idcidade"]);
+			         
+			        $checar = "";
+			        if (in_array(strtolower($cidade->IDCIDADE), $ciSessao)) {
+			            $checar = "selected='selected'";
+			        }
+			        
+			        ?>
+			        <option <?php echo $checar;?> value="<?php echo $cidade->IDCIDADE;?>"><?php echo $cidade->NMCIDADE;?></option>
+			        <?php endforeach;?>
+		        </select>
+		        
+		        <select data-placeholder="Selecione um bairro" multiple="multiple" id="bairrospesquisa" disabled="disabled" style="width: 100%;" name="idbairro" class="chosen-select">
+		        
+	        	</select>
+		  	 */
+		  	if($('.chosen-select').length != 0){
+		      	yepnope([{
+		  		  load: [ pathSite+"js/bower_components/chosen_v1.3.0/chosen.jquery.min.js",pathSite+"js/bower_components/chosen_v1.3.0/chosen.proto.min.js", pathSite+"js/bower_components/chosen_v1.3.0/chosen.min.css" ],
+		  		  complete: function () {
+		  			$(".chosen-select").chosen({no_results_text: "Oops, sem resultados!"});
+		  			
+		  			
+		  			$('#cidadespesquisa').on('change', function(){
+		  				var str = "";
+		  				$('#cidadespesquisa option:selected').each(function(index) { 
+		  					if(index == 0){
+		  						str += $( this ).val();
+		  					}else{
+		  						str += "-"+$( this ).val();
+		  					}
+		  				});
+		  				if(str){
+		  					pegarBairrosByCidadePesquisa(str,"bairrospesquisa","");
+		  				}else{
+		  					$("#bairrospesquisa option").remove();
+		  		        	$("#bairrospesquisa").append("<option value=''>Selecione uma cidade.</option>");
+		  		        	$("#bairrospesquisa").trigger("chosen:updated");
+		  				}
+		  		    });
+		  			
+		  		  }
+		  		}]);
+		      }
+		  	
+		  	if($('.QapTcha').length != 0){
+			  	$('.QapTcha').QapTcha({
+					disabledSubmit:true,
+					autoRevert:true,
+					autoSubmit:false,
+					txtLock: 'Para desbloquear o envio arraste a seta para a direita.',
+					txtUnlock: 'Formulário liberado;',
+					PHPfile: pathSite+'ctrl.php?acao=verificaCaptcha'
+				});
+		  	}
+		  	
 		      /*
 		       * FUNCAO PARA CRIAR AUTOCOMPLETE
 		       */
@@ -412,12 +477,54 @@ yepnope([{
 
 	            html2canvas($('#rodape'), {
 	                onrendered: function (canvas) {
-	                    var img = canvas.toDataURL("image/png")
+	                    var img = canvas.toDataURL("image/png");
 	                    window.open(img);
 	                }
 	            });
 
 	    });
+		
+		  
+	  /*
+	   * 
+	   * <div class="row" style="margin-top: 5px;">
+                <div class="col-md-12 col-xs-12 col-sm-12" align="center">
+                <input type='hidden' name="offsetPaginacao" id="offsetPaginacao2" value='4'/>
+                <input type='hidden' name="totalPaginacao" id="totalPaginacao2" value='<?php echo count($aImoveisTotal);?>'/>
+                    <div class="pagination-holder clearfix">
+                		<div class="paginacao2 light-theme simple-pagination" id="light-pagination"></div>
+                	</div>
+            	</div>
+          </div>
+	   * 
+	   */  
+	  if($('.paginacao2').length != 0){ 
+			$('.paginacao2').pagination({
+				items: $('#totalPaginacao2').val(),
+				itemsOnPage: $('#offsetPaginacao2').val(),
+				cssStyle: 'compact-theme',
+				nextText: 'Próximo',
+				prevText: 'Anterior',
+				displayedPages : 2,
+				onPageClick: function(pageNumber, event){
+					var str = location.toString();
+					var n = str.indexOf("pagina"); 
+					if(n == -1){
+						window.location.href=str+"/pagina/"+(pageNumber);
+					}else{
+						var outString = str.replace(/\/pagina\/[0-9]+/gi, '');
+						window.location.href=outString+"/pagina/"+pageNumber;
+					}
+				},
+				onInit : function(){
+					var pagina = location.toString().match(/\/pagina\/[0-9]+/gi);
+					if(pagina != null){
+						var paginaFormatada = pagina.toString().match(/[0-9]+/);
+						$('.paginacao2').pagination('drawPage', paginaFormatada);
+					}
+				}
+			});
+		}
 		  
 
 	  }
@@ -599,6 +706,177 @@ function ereJoin(obj) {
 	}
 	return url;
 }
+
+function pegarBairrosByCidadePesquisa(cidadeId,idMostrarCarregando,bairrosSelecionados){
+	$.ajax({
+        url: pathSite + 'ctrl.php?acao=listarBairros',
+        dataType: 'json',
+        type: 'POST',
+        data: {
+        	id: cidadeId,
+        	bairros_selecionados: bairrosSelecionados
+        },
+        success: function(obj){
+        	if(obj == null){
+        		$("#"+idMostrarCarregando+" option").remove();
+        		$("#"+idMostrarCarregando).append("<option value=''>Erro ao carregar os bairros.</option>");
+            	$("#"+idMostrarCarregando).trigger("chosen:updated");
+        	}
+            if(obj.situacao=="sucess"){
+            	
+            	$("#"+idMostrarCarregando+" option").remove();
+            	$("#"+idMostrarCarregando).append(obj.bairros);
+            	$("#"+idMostrarCarregando).attr('disabled',false);
+            	$("#"+idMostrarCarregando).trigger("chosen:updated");
+            } else if(obj.situacao=="error"){
+            	
+                mostraMensagem(obj.msg,4,'error',true);
+            }else if(obj == null){
+            	
+            }
+        },
+        error : function (XMLHttpRequest, textStatus, errorThrown) {
+        	
+        },
+
+        beforeSend : function(requisicao){
+        	$("#"+idMostrarCarregando+" option").remove();
+        	$("#"+idMostrarCarregando).append("<option value=''>Carregando bairros.</option>");
+        	$("#"+idMostrarCarregando).trigger("chosen:updated");
+        }
+    });
+}
+
+$(function(){
+	$(".selecaoPegarBairros").change(function(){
+		var str = "";
+		$('#cidades option:selected').each(function(index) { 
+			if(index == 0){
+				str += $( this ).val();
+			}else{
+				str += "-"+$( this ).val();
+			}
+		});
+		if(str){
+			pegarBairrosByCidade(str,"bairros");
+		}else{
+			$("#bairros option").remove();
+        	$("#bairros").append("<option value=''>Selecione uma cidade.</option>");
+		}
+	});
+	
+});
+
+$(function(){
+	$('#cidadespesquisa').on('change', function(){
+		var str = "";
+		$('#cidadespesquisa option:selected').each(function(index) { 
+			if(index == 0){
+				str += $( this ).val();
+			}else{
+				str += "-"+$( this ).val();
+			}
+		});
+		if(str){
+			pegarBairrosByCidadePesquisa(str,"bairrospesquisa","");
+		}else{
+			$("#bairrospesquisa option").remove();
+        	$("#bairrospesquisa").append("<option value=''>Selecione uma cidade.</option>");
+		}
+    });
+});
+
+function abreFoto(img){
+	
+	$.fancybox.open(["<div align='center'><img src='"+img+"'/></div>"],{
+    	openEffect : 'elastic',
+			openEasing : 'easeOutBack',
+			openSpeed  : 800,
+			closeEasing : 'easeInBack',
+			closeSpeed  : 800,
+			closeEffect : 'elastic',
+			nextEasing : 'easeInBack',
+			nextSpeed: 800,
+			nextEffect : 'elastic',
+			prevEffect : 'elastic',
+			prevEasing : 'easeInBack',
+			prevSpeed: 800
+			
+	});
+}
+
+
+function abreHtml(html){
+	
+	$.fancybox.open([html],{
+    	openEffect : 'elastic',
+			openEasing : 'easeOutBack',
+			openSpeed  : 800,
+			closeEasing : 'easeInBack',
+			closeSpeed  : 800,
+			closeEffect : 'elastic',
+			nextEasing : 'easeInBack',
+			nextSpeed: 800,
+			nextEffect : 'elastic',
+			prevEffect : 'elastic',
+			prevEasing : 'easeInBack',
+			prevSpeed: 800
+			
+	});
+}
+
+function abrirFotos(url){
+	
+	mostraMensagem('Carregando',4,'info',true);
+	$.ajax({
+		  url: url,
+		  dataType: 'json',
+		  type: 'POST',
+		  success: function(obj){
+			  
+			  if(obj.situacao=="sucess"){
+				
+				var photos = new Array();
+				  for (var i in obj.fotos) {
+					photos[i] = {href : obj.fotos[i].src, title : obj.fotos[i].title};
+				  }
+				    
+				    $.fancybox.open(photos,{
+				    	openEffect : 'elastic',
+	  					openEasing : 'easeOutBack',
+	  					openSpeed  : 800,
+	  					closeEasing : 'easeInBack',
+	  					closeSpeed  : 800,
+	  					closeEffect : 'elastic',
+	  					nextEasing : 'easeInBack',
+	  					nextSpeed: 800,
+	  					nextEffect : 'elastic',
+	  					prevEffect : 'elastic',
+	  					prevEasing : 'easeInBack',
+	  					prevSpeed: 800,
+	  					afterLoad : function(){
+	  						$.noty.closeAll();
+					    }
+	  					
+				    }
+				    
+				    );
+				    
+				    
+				  
+			  } else if(obj.situacao=="error"){
+				  mostraMensagem('Não existem fotos para este imóvel',2,'error',true);
+			  }
+		  },
+		  error : function (XMLHttpRequest, textStatus, errorThrown) {
+			  
+		  },
+		  
+		  beforeSend : function(requisicao){
+		  }
+	  });
+}
+
 
 // Preloader Body
 /*window.addEventListener('DOMContentLoaded', function() {
