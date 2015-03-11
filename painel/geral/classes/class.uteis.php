@@ -1,8 +1,5 @@
 <?
 
-ini_set("allow_url_include", "1");
-ini_set("allow_url_fopen", "1");
-
 class Uteis {
 
     public function gerarCodigo($nome){
