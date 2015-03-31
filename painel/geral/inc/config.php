@@ -1,6 +1,6 @@
 <?php
 	error_reporting(E_ALL);
-	ini_set('display_errors', 0);
+	ini_set('display_errors', 1);
 	header('Content-Type: text/html; charset=utf-8');
 	/* caminho dos paths */
 	if (($_SERVER['SERVER_NAME'] == '192.168.7.206') || ($_SERVER['SERVER_NAME'] == 'localhost')) {

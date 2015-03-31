@@ -44,7 +44,6 @@ $titPag = ".: COLOCAR TITULO - ";
 
 switch ($objPost->param["acao"]) {
     default:
-        $imovel = $objImovel->listar();
         $meta->tags = "metas tags separadas por virgula";
         $meta->descricao = "descrição maximo 160 caracteres";
         $titPag .= "SUBTITULO :.";
