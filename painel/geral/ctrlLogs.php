@@ -1,4 +1,4 @@
-<?
+<?php
 	//inicia a sessão
 	/*
 	*	Título: Controle da Classe de Logs
@@ -30,5 +30,3 @@
                         
 			break;
 	}
-
-?>

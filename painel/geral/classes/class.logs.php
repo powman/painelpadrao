@@ -1,4 +1,4 @@
-<?
+<?php
 	class Logs {		
 		#################################
 		## VERIFICANDO O ULTIMO ACESSO ##
@@ -54,4 +54,3 @@
 			return $lastInsert;
 		}
 	}
-?>

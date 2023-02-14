@@ -1,0 +1,12 @@
+{
+    "name": "paulohenrique/paineluere",
+    "authors": [
+        {
+            "name": "powman",
+            "email": "paulophpweb@gmail.com"
+        }
+    ],
+    "require": {
+        "envms/fluentpdo": "^2.2"
+    }
+}

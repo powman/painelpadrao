@@ -36,6 +36,7 @@ $objEmail = new Email();
 $conf = Config::AtributosConfig();
 $objUteis->encode($conf);
 
+$meta = new stdClass();
 $meta->og['image'] = "http://" . $_SERVER['SERVER_NAME'] . "/imagem/100x100/img/".base64_encode('facebooklogo/logo.png');
 $meta->og['title'] = "";
 $meta->og['description'] = "";
@@ -230,4 +231,3 @@ switch ($objPost->param["acao"]) {
     break;
 
 }
-?>

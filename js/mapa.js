@@ -5,7 +5,7 @@ var latitudeDestaque=$("#latitudeDestImovel").val();var longitudeDestaque=$("#lo
 /*
 <input type="hidden" id="latitudeDestImovel" name="latitudeDestImovel" value="<?php echo $aImovel->getLatitude();?>"/>
 			<input type="hidden" id="longitudeDestImovel" name="longitudeDestImovel" value="<?php echo $aImovel->getLongitude();?>"/>
-			<input type="hidden" id="enderecoCompletoEmpresaAqui" name="enderecoCompletoEmpresaAqui" value="<?= $aImovel->getEndereco().' '.($aImovel->getComplemento() ? ' - ' . $aImovel->getComplemento() : '').', '.$bairroNome->getNmsetor().', '.$cidadeNome->getNmcidade()?>"/>
+			<input type="hidden" id="enderecoCompletoEmpresaAqui" name="enderecoCompletoEmpresaAqui" value="<?php echo  $aImovel->getEndereco().' '.($aImovel->getComplemento() ? ' - ' . $aImovel->getComplemento() : '').', '.$bairroNome->getNmsetor().', '.$cidadeNome->getNmcidade()?>"/>
 			<ul class="map__control mapa_busca_legendas legendas" style="text-decoration: none; margin: 0px; padding: 0px;">
 			<li><img src="<?php echo $this->baseUrl();?>/media/_img/iconesMapa/OQkz4rM9DsVqmALvgm9UNp4lCkT4eDdIv6Ldeq0zasG.png" alt="Academias"/><label><input type="checkbox" value="gym" data-icon="https://d1h8v8ecaokgwa.cloudfront.net/static/OQkz4rM9DsVqmALvgm9UNp4lCkT4eDdIv6Ldeq0zasG.png"/> Academias</label></li>
 			<li><img src="<?php echo $this->baseUrl();?>/media/_img/iconesMapa/6EdUSF98JTYZWIlVeqDIgElA871AYy5P4k8Ul40kACy.png" alt="Bancos"/><label><input type="checkbox" value="bank" data-icon="https://d1h8v8ecaokgwa.cloudfront.net/static/6EdUSF98JTYZWIlVeqDIgElA871AYy5P4k8Ul40kACy.png"/> Bancos</label></li>

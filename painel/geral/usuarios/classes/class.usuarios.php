@@ -1,4 +1,4 @@
-<?
+<?php
 	/*
 	*	Título: Classe Usuários
 	*	Função: Responsável por fazer a busca, cadastro,
@@ -279,4 +279,3 @@
 			return $result;
 		}
 	}
-?>

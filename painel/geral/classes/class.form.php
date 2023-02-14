@@ -1,6 +1,8 @@
-<?
-class Form {
-	public function sk_iniciaFormulario($nome = '', $acaoDoFormulario = '', $aviso = '', $wizardForm = true) {
+<?php
+class Form
+{
+	public function sk_iniciaFormulario($nome = '', $acaoDoFormulario = '', $aviso = '', $wizardForm = true)
+	{
 		if ($wizardForm == true) {
 			$wizard = 'SignupForm';
 		}
@@ -14,33 +16,37 @@ class Form {
 		$formulario .= '<form id="validate" class="form ' . $wizard . '" method="post" action="' . $acaoDoFormulario . '" target="iframeCadForms" name="frmCadFormulario" enctype="multipart/form-data">';
 		$formulario .= '<div class="widget">';
 		$formulario .= '<div class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>' . $nome . '</h6></div>';
-		
+
 		echo $formulario;
 	}
-	public function sk_inicioWizard($nome = '') {
+	public function sk_inicioWizard($nome = '')
+	{
 		$formulario = "";
 		$formulario .= '<fieldset class="step">';
 		$formulario .= '<h1>' . $nome . '</h1>';
-		
+
 		echo $formulario;
 	}
-	public function sk_fimDoFormulario() {
+	public function sk_fimDoFormulario()
+	{
 		$formulario = "";
 		$formulario .= '<iframe name="iframeCadForms" frameborder="0" width="0" height="0"></iframe>';
 		$formulario .= '</div>';
 		$formulario .= '</form>';
 		$formulario .= '</div>';
-		
+
 		echo $formulario;
 	}
-	public function sk_fimWizard() {
+	public function sk_fimWizard()
+	{
 		$formulario = "";
 		$formulario .= '</fieldset>';
-		
+
 		echo $formulario;
 	}
 	// OK
-	public function sk_formColor($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '') {
+	public function sk_formColor($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 		}
@@ -55,10 +61,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' " title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formData($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '') {
+	public function sk_formData($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -67,7 +74,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -75,10 +82,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' maskDate" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formText($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formText($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -87,7 +95,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -95,10 +103,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formGoogleMaps($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formGoogleMaps($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -107,7 +116,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -116,23 +125,24 @@ class Form {
 		$input .= '<a href="https://www.google.com.br/maps/preview" target="_blank">Abrir google maps para pegar o link do mapa</a>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextPassword($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '',$minSize='') {
-	    if($minSize)
-	        $minsize = 'minSize['.$minSize.']';
-	    if ($required == true) {
+	public function sk_formTextPassword($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '', $minSize = '')
+	{
+		if ($minSize)
+			$minsize = 'minSize[' . $minSize . ']';
+		if ($required == true) {
 			$required = 'validate[required,minSize[6]]';
 			$addAsteristico = '<span class="req">*</span>';
-		}else if($minSize){
-		    $required = 'validate['.$minsize.']';
+		} else if ($minSize) {
+			$required = 'validate[' . $minsize . ']';
 		}
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -140,10 +150,11 @@ class Form {
 		$input .= '<input type="password" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formCheckbox($nomeLabel = '', $nameInput = '', $checked = '', $required = false, $descripton = '', $value = '') {
+	public function sk_formCheckbox($nomeLabel = '', $nameInput = '', $checked = '', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -155,7 +166,7 @@ class Form {
 		if ($checked) {
 			$checado = "checked='checked'";
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label></label>';
@@ -163,10 +174,11 @@ class Form {
 		$input .= '<input type="checkbox" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" ' . $checado . ' name="' . $nameInput . '" value="' . $value . '" id="' . $nameInput . '" /><label for="' . $nameInput . '">' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTags($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTags($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -175,7 +187,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -184,10 +196,11 @@ class Form {
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		$input .= '<script>$(".tags' . $nameInput . '").tagsInput({width:\'100%\'});</script>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextEmail($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextEmail($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required,custom[email]]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -198,7 +211,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -206,10 +219,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextUrl($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextUrl($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required,custom[url]]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -220,7 +234,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -228,10 +242,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextTelefone($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextTelefone($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required] maskPhone';
 			$addAsteristico = '<span class="req">*</span>';
@@ -242,7 +257,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -250,10 +265,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextCPF($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextCPF($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required] maskCPF';
 			$addAsteristico = '<span class="req">*</span>';
@@ -264,7 +280,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -272,10 +288,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextCNPJ($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextCNPJ($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required] maskCNPJ';
 			$addAsteristico = '<span class="req">*</span>';
@@ -286,7 +303,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -294,10 +311,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextCep($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextCep($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required] maskCep';
 			$addAsteristico = '<span class="req">*</span>';
@@ -308,7 +326,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -316,22 +334,25 @@ class Form {
 		$input .= '<input onblur="verificaCep(this.value)" type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formHidden($nameInput = '', $value = '') {
+	public function sk_formHidden($nameInput = '', $value = '')
+	{
 		$input = "";
 		$input .= '<input type="hidden" name="' . $nameInput . '" id="' . $nameInput . '" value="' . $value . '" />';
-		
+
 		echo $input;
 	}
-	public function sk_formSubmit($nome = 'Salvar') {
+	public function sk_formSubmit($nome = 'Salvar')
+	{
 		$input = "";
 		$input .= '<a href="javascript:;" onClick="$(\'#validate\').submit();" title="" class="button blackB" style="margin: 18px; float: right;"><span>' . $nome . '</span></a>';
-		
+
 		echo $input;
 	}
-	public function sk_formSelect($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false) {
+	public function sk_formSelect($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false)
+	{
 		$multiplo = '';
 		$classeMultipe = '';
 		$selecione = '';
@@ -341,7 +362,7 @@ class Form {
 		} else {
 			$selecione = '<option value="" selected="selected">Selecione...</option>';
 		}
-		
+
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
@@ -353,31 +374,32 @@ class Form {
 		} else {
 			$multipleStyle = "width:100%;";
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<select ' . $multiplo . ' style="' . $multipleStyle . '" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' ' . $classeMultipe . '" title="' . $textoDescription . '">';
-		
-		for($i = 0; $i < count ( $arrayOption ); $i ++) {
+
+		for ($i = 0; $i < count($arrayOption); $i++) {
 			$input .= $selecione;
-			$input .= $arrayOption [$i];
+			$input .= $arrayOption[$i];
 		}
 		$input .= '</select>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formSelectEstado($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false) {
+	public function sk_formSelectEstado($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false)
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
 		} else {
 			$selecione = '<option value="" selected="selected">Selecione...</option>';
 		}
-		
+
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
@@ -389,31 +411,32 @@ class Form {
 		} else {
 			$multipleStyle = "width:100%;";
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<select onchange="mudarCidade(this.value)" ' . $multiplo . ' style="' . $multipleStyle . '" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' ' . $classeMultipe . '" title="' . $textoDescription . '">';
-		
-		for($i = 0; $i < count ( $arrayOption ); $i ++) {
+
+		for ($i = 0; $i < count($arrayOption); $i++) {
 			$input .= $selecione;
-			$input .= $arrayOption [$i];
+			$input .= $arrayOption[$i];
 		}
 		$input .= '</select>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formSelectCidade($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false) {
+	public function sk_formSelectCidade($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false)
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
 		} else {
 			$selecione = '<option value="" selected="selected">Selecione...</option>';
 		}
-		
+
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
@@ -425,24 +448,25 @@ class Form {
 		} else {
 			$multipleStyle = "width:100%;";
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<select onchange="mudarBairro(this.value)" ' . $multiplo . ' style="' . $multipleStyle . '" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' ' . $classeMultipe . '" title="' . $textoDescription . '">';
-		
-		for($i = 0; $i < count ( $arrayOption ); $i ++) {
+
+		for ($i = 0; $i < count($arrayOption); $i++) {
 			$input .= $selecione;
-			$input .= $arrayOption [$i];
+			$input .= $arrayOption[$i];
 		}
 		$input .= '</select>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formSelectWithImage($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false) {
+	public function sk_formSelectWithImage($nomeLabel = '', $nameInput = '', $arrayOption = '', $required = false, $descripton = '', $multiple = false)
+	{
 		$multiplo = '';
 		$multipleStyle = '';
 		$selecione = '';
@@ -453,7 +477,7 @@ class Form {
 		} else {
 			$selecione = '<option value="" selected="selected">Selecione...</option>';
 		}
-		
+
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
@@ -465,25 +489,26 @@ class Form {
 		} else {
 			$multipleStyle = "width:100%;";
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<select ' . $multiplo . ' style="' . $multipleStyle . '" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . ' ' . $classeMultipe . ' select-image" title="' . $textoDescription . '">';
-		
-		for($i = 0; $i < count ( $arrayOption ); $i ++) {
+
+		for ($i = 0; $i < count($arrayOption); $i++) {
 			$input .= $selecione;
-			$input .= $arrayOption [$i];
+			$input .= $arrayOption[$i];
 		}
 		$input .= '</select>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formPreco($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
-		
+	public function sk_formPreco($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
+
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -492,7 +517,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -500,11 +525,12 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $nameInput . ' preco" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formArea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
-		
+	public function sk_formArea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
+
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -513,7 +539,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -521,10 +547,11 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' area" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextarea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextarea($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -533,7 +560,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		if ($maxlength) {
 			$jsLimite = "<script>$('.lim" . $nameInput . "').inputlimiter({
                             limit: " . $maxlength . "
@@ -542,7 +569,7 @@ class Form {
                     });</script>";
 			$limita = "lim" . $nameInput;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -551,10 +578,11 @@ class Form {
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
 		$input .= $jsLimite;
-		
+
 		echo $input;
 	}
-	public function sk_formTextHTML($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextHTML($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -563,7 +591,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -571,10 +599,11 @@ class Form {
 		$input .= '<textarea name="' . $nameInput . '" id="editor" class="' . $required . '">' . $value . '</textarea>';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextSoNumber($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '') {
+	public function sk_formTextSoNumber($nomeLabel = '', $nameInput = '', $maxlength = '255', $required = false, $descripton = '', $value = '')
+	{
 		if ($required == true) {
 			$required = 'validate[required,custom[onlyNumberSp]]';
 			$addAsteristico = '<span class="req">*</span>';
@@ -585,7 +614,7 @@ class Form {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		$input = "";
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
@@ -593,21 +622,22 @@ class Form {
 		$input .= '<input type="text" name="' . $nameInput . '" id="' . $nameInput . '" maxlength="' . $maxlength . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" value="' . $value . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formTextSliderByte($nomeLabel = '', $nameInput = '',$minValor = '0', $maxValor = '500',$step='1', $value = '') {
-		
+	public function sk_formTextSliderByte($nomeLabel = '', $nameInput = '', $minValor = '0', $maxValor = '500', $step = '1', $value = '')
+	{
+
 		$input = " <script>
 		        $(function(){
 	                 $( \".uiSliderInc\" ).slider({ 
-                		value:".($value && $value != 'unlimited' ? $value : $minValor).",
-                		min: ".$minValor.",
-                		max: ".$maxValor.",
-                		step: ".$step.",
+                		value:" . ($value && $value != 'unlimited' ? $value : $minValor) . ",
+                		min: " . $minValor . ",
+                		max: " . $maxValor . ",
+                		step: " . $step . ",
                 		slide: function( event, ui ) {
                 			$( \".mudarValor\" ).html( bytesToSize(ui.value) );
-                			$( \"#".$nameInput."\" ).val( ui.value );
+                			$( \"#" . $nameInput . "\" ).val( ui.value );
                 		}
                 	});
 	            });
@@ -617,29 +647,30 @@ class Form {
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
-		$input .= '<label class="mudarValor">'.($value && $value != 'unlimited' ? $this->formatBytes($value) : $this->formatBytes($minValor)).'</label>';
+		$input .= '<label class="mudarValor">' . ($value && $value != 'unlimited' ? $this->formatBytes($value) : $this->formatBytes($minValor)) . '</label>';
 		$input .= '<div class="uiSliderInc"></div>';
 		$input .= '<input type="hidden" name="' . $nameInput . '" id="' . $nameInput . '" value="' . ($value && $value != 'unlimited' ? $value : $minValor) . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_formFile($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $arquivoImg = '', $urlExcluir = '', $urlRetorno = '') {
+	public function sk_formFile($nomeLabel = '', $nameInput = '', $required = false, $descripton = '', $arquivoImg = '', $urlExcluir = '', $urlRetorno = '')
+	{
 		$input = "";
 		if ($required == true) {
 			$required = 'validate[required]';
 			$addAsteristico = '<span class="req">*</span>';
 		}
-		
+
 		if ($descripton) {
 			$tooltip = 'tipS';
 			$textoDescription = $descripton;
 		}
-		
+
 		if ($arquivoImg) {
 			$input .= '<div class="gallery">';
-			
+
 			$input .= '<ul>';
 			$input .= '<li style="position:relative;">';
 			if ($urlExcluir && $urlRetorno) {
@@ -653,23 +684,24 @@ class Form {
 			$input .= '<div class="fix"></div>';
 			$input .= '</div>';
 		}
-		
+
 		$input .= '<div class="formRow">';
 		$input .= '<label>' . $addAsteristico . " " . $nomeLabel . '</label>';
 		$input .= '<div class="formRight">';
 		$input .= '<input type="file" name="' . $nameInput . '" id="' . $nameInput . '" class="' . $required . ' ' . $tooltip . '" title="' . $textoDescription . '" />';
 		$input .= '</div><div class="clear"></div>';
 		$input .= '</div>';
-		
+
 		echo $input;
 	}
-	public function sk_montaMultUploadGaleria($id = '', $acaoGravarFotos = '', $arrayFotos = '', $urlExcluirArquivo = '', $idupload = 'uploadergaleria', $fileTypes = 'jpg,gif,png', $fileTypesDesc = 'Todos os arquivos', $width = 640, $height = 640, $maxFotos = 10) {
-		
+	public function sk_montaMultUploadGaleria($id = '', $acaoGravarFotos = '', $arrayFotos = '', $urlExcluirArquivo = '', $idupload = 'uploadergaleria', $fileTypes = 'jpg,gif,png', $fileTypesDesc = 'Todos os arquivos', $width = 640, $height = 640, $maxFotos = 10)
+	{
+
 		/**
-         * Exemplo <?=/**
-		 * Exemplo <?=/**
-		 * Exemplo <?=/**
-		 * Exemplo <?=$objUteis->sk_montaMultUploadGaleria($configuracao["id"],'index.php?acao=cadastraFoto&ctrl=configuracoes',$fotos,'','');
+		 * Exemplo <?php echo /**
+		 * Exemplo <?php echo /**
+		 * Exemplo <?php echo /**
+		 * Exemplo <?php echo $objUteis->sk_montaMultUploadGaleria($configuracao["id"],'index.php?acao=cadastraFoto&ctrl=configuracoes',$fotos,'','');
 		 *
 		 * ?>
 		 */
@@ -739,47 +771,48 @@ class Form {
 		$funcaoJquery .= "}); \n";
 		$funcaoJquery .= "
 						</script>";
-		
+
 		if ($arrayFotos) {
 			$funcaoJquery .= '
                 <div style="margin-top:20px;" class="title"><img src="images/icons/dark/fullscreen.png" alt="" class="titleIcon" /><h6>Arquivos:</h6>
                 </div>
                 ';
-                			$funcaoJquery .= '
+			$funcaoJquery .= '
                 <div class="gallery" style="background:rgba(0, 0, 0, 0.4)">
                 	';
-                			$funcaoJquery .= '
+			$funcaoJquery .= '
                 	<ul>
                 		';
-                			
-                			for($i = 0; $i < $arrayFotos ["num"]; $i ++) {
-                				if ($urlExcluirArquivo) {
-                					$divExcluirArquivo = '
-                		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos [$i]->id . '&img=' . $arrayFotos [$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
+
+			for ($i = 0; $i < $arrayFotos["num"]; $i++) {
+				if ($urlExcluirArquivo) {
+					$divExcluirArquivo = '
+                		<div class="actions"><a href="javascript:;" onclick="confirmDelFotoGaleria(\'' . $urlExcluirArquivo . '&id=' . $arrayFotos[$i]->id . '&img=' . $arrayFotos[$i]->img . '\',$(this))" class="tipS" title="Excluir"><img src="images/icons/delete.png"/>
                 		</div>';
-                				}
-                				$funcaoJquery .= '
+				}
+				$funcaoJquery .= '
                 		<li style="width:95px; position:relative; background:#fff; height:100px; overflow:hidden;">
                 			';
-                				$funcaoJquery .= '<a href="' . $arrayFotos [$i] ->img . '" title="" rel="lightbox">';
-                				$funcaoJquery .= '<img src="' . $arrayFotos [$i]->img . '" height="100" alt="" />';
-                				$funcaoJquery .= '</a>';
-                				$funcaoJquery .= $divExcluirArquivo;
-                				$funcaoJquery .= '
+				$funcaoJquery .= '<a href="' . $arrayFotos[$i]->img . '" title="" rel="lightbox">';
+				$funcaoJquery .= '<img src="' . $arrayFotos[$i]->img . '" height="100" alt="" />';
+				$funcaoJquery .= '</a>';
+				$funcaoJquery .= $divExcluirArquivo;
+				$funcaoJquery .= '
                 		</li>';
-                			}
-                			$funcaoJquery .= '
+			}
+			$funcaoJquery .= '
                 	</ul>
                 	';
-                			$funcaoJquery .= '<div class="fix"></div>
+			$funcaoJquery .= '<div class="fix"></div>
                 	';
-                			$funcaoJquery .= '
+			$funcaoJquery .= '
                 </div>';
 		}
-		
+
 		echo $funcaoJquery;
 	}
-	public function sk_formListar($nome = '', $arrayTableNome, $arrayDadosTable, $campos, $ctrl = '', $permissaopublicar = 0, $permissaoalterar = 0, $permissaoexcluir = 0, $aviso = '', $acaoOrdenar = '') {
+	public function sk_formListar($nome = '', $arrayTableNome, $arrayDadosTable, $campos, $ctrl = '', $permissaopublicar = 0, $permissaoalterar = 0, $permissaoexcluir = 0, $aviso = '', $acaoOrdenar = '')
+	{
 		$formulario = "";
 		if ($acaoOrdenar) {
 			$formulario .= '<script>';
@@ -787,10 +820,10 @@ class Form {
 			$formulario .= 'ordemNaTabela("dTableAff","' . $acaoOrdenar . '","index.php?acao=listar&ctrl=' . $ctrl . '");';
 			$formulario .= ' });';
 			$formulario .= '</script>';
-		}else{
-		    $tableClasse = 'dTable';    
+		} else {
+			$tableClasse = 'dTable';
 		}
-		
+
 		$formulario .= '
 <div class="wrapper">
 	';
@@ -806,7 +839,7 @@ class Form {
 			$formulario .= '
 	</div>';
 		}
-		
+
 		$formulario .= '
 	<div class="widget">
 		';
@@ -815,7 +848,7 @@ class Form {
 		</div>
 		';
 		$formulario .= '
-		<table cellpadding="0" cellspacing="0" border="0" class="display withCheck dTableAff '.$tableClasse.'">
+		<table cellpadding="0" cellspacing="0" border="0" class="display withCheck dTableAff ' . $tableClasse . '">
 			';
 		$formulario .= '
 			<thead>
@@ -826,8 +859,8 @@ class Form {
 		if ($acaoOrdenar) {
 			$formulario .= '<th>ORDEM</th>';
 		}
-		for($i = 0; $i < count ( $arrayTableNome ); $i ++) {
-			$formulario .= '<th>' . $arrayTableNome [$i] . '</th>';
+		for ($i = 0; $i < count($arrayTableNome); $i++) {
+			$formulario .= '<th>' . $arrayTableNome[$i] . '</th>';
 		}
 		if ($permissaopublicar === 1) {
 			$formulario .= '<th>STATUS</th>';
@@ -842,9 +875,9 @@ class Form {
 		$formulario .= '
 			<tbody>
 				';
-		
-		for($i = 0; $i < $arrayDadosTable ["num"]; $i ++) {
-			if (isset($arrayDadosTable [$i] ->status) && $arrayDadosTable [$i] ->status == 1) {
+
+		for ($i = 0; $i < $arrayDadosTable["num"]; $i++) {
+			if (isset($arrayDadosTable[$i]->status) && $arrayDadosTable[$i]->status == 1) {
 				$tooltip = "Clique para desativar";
 				$statusAtivadoDesativado = "ativado";
 				$statusAlterar = 0;
@@ -855,7 +888,7 @@ class Form {
 			}
 			$posicaoOrdem = "";
 			if ($acaoOrdenar) {
-				$posicaoOrdem = "data-position='" . ($i) . "' id='" . $arrayDadosTable [$i]->id . "'";
+				$posicaoOrdem = "data-position='" . ($i) . "' id='" . $arrayDadosTable[$i]->id . "'";
 			}
 			$formulario .= '
 				<tr class="gradeA" ' . $posicaoOrdem . '>
@@ -864,18 +897,18 @@ class Form {
 			if ($acaoOrdenar) {
 				$bgMove = 'class="bgMoveMove"';
 				$formulario .= '<td align="center" ' . $bgMove . '>';
-				$formulario .= ($arrayDadosTable [$i]->ordem ? $arrayDadosTable [$i]->ordem : $i);
+				$formulario .= ($arrayDadosTable[$i]->ordem ? $arrayDadosTable[$i]->ordem : $i);
 				$formulario .= '</td>';
 			}
-			for($j = 0; $j < count ( $arrayTableNome ); $j ++) {
+			for ($j = 0; $j < count($arrayTableNome); $j++) {
 				$formulario .= '<td align="center">';
-				$formulario .= $arrayDadosTable [$i]->$campos [$j];
+				$formulario .= $arrayDadosTable[$i]->$campos[$j];
 				$formulario .= '</td>';
 			}
 			if ($permissaopublicar === 1) {
 				$formulario .= '<td align="center" class="actBtns">';
 				if ($permissaopublicar === 1) {
-					$formulario .= '<a href="javascript:;" title="' . $tooltip . '" class="tipS" onclick="confirmPubGeral(\'index.php?acao=publicar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable [$i] ->id . '&status=' . $statusAlterar . '\',\'index.php?acao=listar&ctrl=' . $ctrl . '\');">';
+					$formulario .= '<a href="javascript:;" title="' . $tooltip . '" class="tipS" onclick="confirmPubGeral(\'index.php?acao=publicar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable[$i]->id . '&status=' . $statusAlterar . '\',\'index.php?acao=listar&ctrl=' . $ctrl . '\');">';
 					$formulario .= '<img src="images/icons/control/16/' . $statusAtivadoDesativado . '.png" />';
 					$formulario .= '</a>';
 				}
@@ -883,12 +916,12 @@ class Form {
 			}
 			$formulario .= '<td class="actBtns">';
 			if ($permissaoalterar === 1) {
-				$formulario .= '<a href="index.php?acao=frmAlterar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable [$i]->id . '" title="Editar" class="tipS">';
+				$formulario .= '<a href="index.php?acao=frmAlterar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable[$i]->id . '" title="Editar" class="tipS">';
 				$formulario .= '<img src="images/icons/control/16/pencil.png" alt="" />';
 				$formulario .= '</a>';
 			}
 			if ($permissaoexcluir === 1) {
-				$formulario .= '<a href="javascript:;" title="Excluir" onclick="confirmDelGeral(\'index.php?acao=deletar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable [$i]->id . '\',\'index.php?acao=listar&ctrl=' . $ctrl . '\');" class="tipS">';
+				$formulario .= '<a href="javascript:;" title="Excluir" onclick="confirmDelGeral(\'index.php?acao=deletar&ctrl=' . $ctrl . '&id=' . $arrayDadosTable[$i]->id . '\',\'index.php?acao=listar&ctrl=' . $ctrl . '\');" class="tipS">';
 				$formulario .= '<img src="images/icons/control/16/clear.png" alt="" />';
 				$formulario .= '</a>';
 			}
@@ -907,11 +940,12 @@ class Form {
 	';
 		$formulario .= '
 </div>';
-		
+
 		echo $formulario;
 	}
-	public function sk_montaMapa($idMapa = "markerAdd", $cidadeInicial = "Goiânia", $latitude = '', $longitude = '', $iconeMapa = 'images/iconMap.png') {
-		
+	public function sk_montaMapa($idMapa = "markerAdd", $cidadeInicial = "Goiânia", $latitude = '', $longitude = '', $iconeMapa = 'images/iconMap.png')
+	{
+
 		/**
 		 * Monta Galeria Youtube
 		 */
@@ -981,9 +1015,9 @@ $("#' . $idMapa . 'mapaclick").click();
 
 ';
 		}
-		
+
 		if ($latitude != "" && $longitude != "") {
-			
+
 			$funcaoJquery .= '
 $(function(){
 $("#' . $idMapa . '").gmap3({
@@ -1041,11 +1075,11 @@ $("#' . $idMapa . 'longitude").val(results[0].geometry.location.lng());
 		}
 		$funcaoJquery .= '
 	</script>';
-		
+
 		$funcaoJquery .= '
 	<div align="center">
 		';
-		
+
 		$funcaoJquery .= '
 		<div class="formRow">
 			';
@@ -1099,38 +1133,39 @@ $("#' . $idMapa . 'longitude").val(results[0].geometry.location.lng());
 		';
 		$funcaoJquery .= '
 	</div>';
-		
+
 		echo $funcaoJquery;
 	}
-	public function sk_formClone($campos = '') {
+	public function sk_formClone($campos = '')
+	{
 		$input = "";
 		$input .= '<script src="js/jquery.sheepItPlugin-1.1.1.js"></script>';
-		
+
 		$input .= "<style>";
 		$input .= "#sheepItForm_controls div, #sheepItForm_controls div input {";
 		$input .= "float:left;";
 		$input .= "margin-right: 10px;";
 		$input .= "}";
-		
+
 		$input .= "</style>";
-		
+
 		$input .= "<!-- sheepIt Form -->";
 		$input .= "<div id=\"sheepItForm\" style='margin:15px;' align='center'>";
-		
+
 		$input .= "<!-- Form template-->";
 		$input .= "<div id=\"sheepItForm_template\">";
-		for($i = 0; $i < count ( $campos ); $i ++) {
-			
-			$input .= $campos [$i];
+		for ($i = 0; $i < count($campos); $i++) {
+
+			$input .= $campos[$i];
 		}
 		$input .= "</div>";
-		
+
 		$input .= "<!-- /Form template-->";
-		
+
 		$input .= "<!-- No forms template -->";
 		$input .= "<div id=\"sheepItForm_noforms_template\">Nenhum resultado</div>";
 		$input .= "<!-- /No forms template-->";
-		
+
 		$input .= "<!-- Controls -->";
 		$input .= "<div id=\"sheepItForm_controls\" align='center' style='padding:15px;'>";
 		$input .= "<a href='javascript:;' id='sheepItForm_add' class='next button greenB'><span>mais campos</span></a>";
@@ -1141,24 +1176,23 @@ $("#' . $idMapa . 'longitude").val(results[0].geometry.location.lng());
 		$input .= "<a id='sheepItForm_add_n_button' class='next button blackB' href='javascript:;'><span>Add</span></a></div>";
 		$input .= "</span>";
 		$input .= "<!-- /Controls -->";
-		
+
 		$input .= "</div>";
 		$input .= "<!-- /sheepIt Form -->";
-		
+
 		echo $input;
 	}
-    
-    function formatBytes($bytes, $precision = 2)
-    {
-        $bytes = $bytes * 1000000;
-        // human readable format -- powers of 1000
-        //
-        $unit = array('B','KB','MB','GB','TB','PB','EB');
-    
-        return @round(
-                $bytes / pow(1000, ($i = floor(log($bytes, 1000)))), $precision
-        ).' '.$unit[$i];
-    }
-}
 
-?>
+	function formatBytes($bytes, $precision = 2)
+	{
+		$bytes = $bytes * 1000000;
+		// human readable format -- powers of 1000
+		//
+		$unit = array('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB');
+
+		return @round(
+			$bytes / pow(1000, ($i = floor(log($bytes, 1000)))),
+			$precision
+		) . ' ' . $unit[$i];
+	}
+}

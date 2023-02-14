@@ -1,6 +1,6 @@
 RewriteEngine On
 
-RewriteBase /sites/painelPadrao/site/painelpadrao/
+RewriteBase /paineluere/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

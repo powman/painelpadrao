@@ -1,4 +1,4 @@
-<?
+<?php
 	/*
 	*	Título: Classe Seção Dinâmica
 	*	Função: Responsável por fazer a busca, cadastro,
@@ -51,4 +51,3 @@
 			return $aValores;
 		}
 	}
-?>

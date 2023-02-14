@@ -1,15 +1,15 @@
 <script type="text/javascript">
-	function validaFrmCadSecao(form){
-		if(form.titulo.value==""){
-			document.getElementById('respostaCadSecao').innerHTML = 'Por favor, preencha o campo TÍTULO!';
-			form.titulo.focus();
-			return false;
-		}
-	}
+    function validaFrmCadSecao(form) {
+        if (form.titulo.value == "") {
+            document.getElementById('respostaCadSecao').innerHTML = 'Por favor, preencha o campo TÍTULO!';
+            form.titulo.focus();
+            return false;
+        }
+    }
 </script>
 <div align="center">
-	<div class="resposta" id="respostaCadSecao"></div>
-	<form action="ctrlSecao.php?acao=cadastraSecao" name="frmCadSecao" id="frmCadSecao" method="post" enctype="multipart/form-data" target="iframeCadSecao" onsubmit="return validaFrmCadSecao(this);">
+    <div class="resposta" id="respostaCadSecao"></div>
+    <form action="ctrlSecao.php?acao=cadastraSecao" name="frmCadSecao" id="frmCadSecao" method="post" enctype="multipart/form-data" target="iframeCadSecao" onsubmit="return validaFrmCadSecao(this);">
         <table width="450" cellpadding="0" cellspacing="0" class="frm_tabela">
             <tr>
                 <td colspan="2" class="frm_titulo">Cadastro de Seção</td>
@@ -20,7 +20,7 @@
             <tr>
                 <td class="frm_label" width="220">*Título:</td>
                 <td class="frm_input" width="410">
-                    <input name="titulo" type="text" class="frm_txt" id="titulo" size="50" maxlength="255"/>
+                    <input name="titulo" type="text" class="frm_txt" id="titulo" size="50" maxlength="255" />
                 </td>
             </tr>
             <tr>
@@ -29,11 +29,11 @@
                     <select name="id_secao" id="id_secao">
                         <option value="">Principal</option>
                         <?
-                            for($i=0;$i<$secoes["num"];$i++){
+                        for ($i = 0; $i < $secoes["num"]; $i++) {
                         ?>
-                        <option value="<?=$secoes[$i]->id;?>"><?=utf8_encode($secoes[$i]->titulo);?></option>
+                            <option value="<?php echo $secoes[$i]->id; ?>"><?php echo utf8_encode($secoes[$i]->titulo); ?></option>
                         <?
-                            }
+                        }
                         ?>
                     </select>
                 </td>

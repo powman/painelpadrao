@@ -1,4 +1,4 @@
-<?
+<?php
 
 class Uteis {
 
@@ -1984,5 +1984,3 @@ function acrescentaElementArray($value){
 
 
 }
-
-?>

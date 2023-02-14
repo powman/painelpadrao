@@ -499,7 +499,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `usuario_cpanel`, `senha`, `email`, `img`, `status`, `nivel`) VALUES
-(1, 'Administrador', 'angela', '0de8b41d3fa97119a9057e72601a9bcb', 'paulo@netsuprema.com.br', '', 1, 1);
+(1, 'Administrador', '', '89794b621a313bb59eed0d9f0f4e8205', 'paulophpweb@gmail.com', '', 1, 1);
 
 --
 -- Constraints for dumped tables

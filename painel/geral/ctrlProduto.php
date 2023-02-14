@@ -1,4 +1,4 @@
-<?
+<?php
 /*
  *	Título: Controle da Classe
  *	Funçãoo: Responsável por fazer a solicitação de cadastro,
@@ -327,4 +327,3 @@ case "publicar":
 	break;
 
 }
-?>

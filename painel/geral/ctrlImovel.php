@@ -1,4 +1,4 @@
-<?
+<?php
 
 //inclui a classe de not�cias e estância um objeto
 include_once "classes/class.Imovel.php";
@@ -774,4 +774,3 @@ switch($_REQUEST['acao']){
 		break;
 
 }
-?>

@@ -1,4 +1,4 @@
-<?
+<?php
 define("USERNAMEAPI", "destinyoperadora");
 define("TOKENAPI", "c41a71dec75b4ce2e898f2ffbbc74b978e35837f");
 define("URLAPI", "http://www.goianiaemails.com.br/xml.php");
@@ -109,4 +109,3 @@ class Email {
 	}
 
 }
-?>
